@@ -1,0 +1,398 @@
+{% extends 'base.html' %}
+{% load static %}
+
+      {% block content%}
+      <!-- slider section -->
+      <section class="slider_section">
+        <div id="customCarousel1" class="carousel slide" data-ride="carousel">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <div class="container">
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="detail-box">
+                      <h1>
+                        Web 
+                        service
+                      </h1>
+                      <p>
+                        Explicabo esse amet tempora quibusdam laudantium,
+                        laborum eaque magnam fugiat hic? Esse dicta aliquid
+                        error repudiandae earum suscipit fugiat molestias,
+                        veniam, vel architecto veritatis delectus repellat modi
+                        impedit sequi.
+                      </p>
+                      <div class="btn-box">
+                        <a href="" class="btn1"> Read More </a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="img-box">
+                      <img src="{% static 'website/images/slider-img.png' %}" alt="" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            {%comment%}
+            <div class="carousel-item">
+              <div class="container">
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="detail-box">
+                      <h1>
+                        Crypto <br />
+                        Currency
+                      </h1>
+                      <p>
+                        Explicabo esse amet tempora quibusdam laudantium,
+                        laborum eaque magnam fugiat hic? Esse dicta aliquid
+                        error repudiandae earum suscipit fugiat molestias,
+                        veniam, vel architecto veritatis delectus repellat modi
+                        impedit sequi.
+                      </p>
+                      <div class="btn-box">
+                        <a href="" class="btn1"> Read More </a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="img-box">
+                      <img src="{% static 'website/images/slider-img.png' %}" alt="" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="container">
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="detail-box">
+                      <h1>
+                        Crypto <br />
+                        Currency
+                      </h1>
+                      <p>
+                        Explicabo esse amet tempora quibusdam laudantium,
+                        laborum eaque magnam fugiat hic? Esse dicta aliquid
+                        error repudiandae earum suscipit fugiat molestias,
+                        veniam, vel architecto veritatis delectus repellat modi
+                        impedit sequi.
+                      </p>
+                      <div class="btn-box">
+                        <a href="" class="btn1"> Read More </a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="img-box">
+                      <img src="{% static 'website/images/slider-img.png' %}" alt="" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+          </div>
+          <ol class="carousel-indicators">
+            <li
+              data-target="#customCarousel1"
+              data-slide-to="0"
+              class="active"
+            ></li>
+            <li data-target="#customCarousel1" data-slide-to="1"></li>
+            <li data-target="#customCarousel1" data-slide-to="2"></li>
+          </ol>
+        </div>
+        {%endcomment%}
+      </section>
+      <!-- end slider section -->
+    </div>
+
+    <!-- service section -->
+
+    <section class="service_section layout_padding">
+      <div class="service_container">
+        <div class="container">
+          <div class="heading_container heading_center">
+            <h2>Our <span>Services</span></h2>
+            <p>
+              There are many variations of passages of Lorem Ipsum available,
+              but the majority have suffered alteration
+            </p>
+          </div>
+          <div class="row">
+            <div class="col-md-4">
+                <div class="box">
+                    <div class="img-box">
+                        <img src="{% static 'website/images/opentext.png' %}" alt="" />
+                    </div>
+                    <div class="detail-box">
+                        <h5>OpenText Consulting
+                        </h5>
+                        <p class="initial-text">
+                          In my capacity as an OpenText Consultant, I played a crucial                        </p>
+                        <p class="additional-text" style="display: none;">
+                          role in guiding organizations through the strategic implementation of OpenText's Enterprise Information Management (EIM) solutions.                         </p>
+                        <a href="#" class="read-more-link"> Read More </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="box">
+                    <div class="img-box">
+                        <img src="{% static 'website/images/automation.png' %}" alt="" />
+                    </div>
+                    <div class="detail-box">
+                        <h5>Automation
+                        </h5>
+                        <p class="initial-text">
+                          We redefine efficiency and innovation through cutting-edge                        </p>
+                        <p class="additional-text" style="display: none;">
+                          IT automation solutions. With a relentless commitment to streamlining operations, optimizing workflows, and driving digital transformation, we are your trusted partner in the dynamic landscape of technology. 
+                        </p>
+                        <a href="#" class="read-more-link"> Read More </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="box">
+                    <div class="img-box">
+                        <img src="{% static 'website/images/webdesign.png' %}" alt="" />
+                    </div>
+                    <div class="detail-box">
+                        <h5>Web Designing</h5>
+                        <p class="initial-text">
+                          We are not just a web designing company; we are architects
+                        </p>
+                        <p class="additional-text" style="display: none;">
+                          of digital innovation. We specialize in creating stunning, user-centric websites that not only captivate audiences but also drive tangible results for businesses. With a passion for design excellence and a commitment to pushing the boundaries of web development, we elevate your online presence to new heights.                         </p>
+                        <a href="#" class="read-more-link"> Read More </a>
+                    </div>
+                </div>
+            </div>
+          
+        </div>
+          <div class="btn-box">
+            <a href="{% url 'service' %}"> View All </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- end service section -->
+
+    <!-- about section -->
+
+    <section class="about_section layout_padding">
+      <div class="container">
+        <div class="heading_container heading_center">
+          <h2>About <span>Us</span></h2>
+          <p>
+            Welcome to Opendot, where innovation meets efficiency!
+          </p>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="img-box">
+              <img src="{% static 'website/images/server-img.png' %}" alt="" />
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="detail-box">
+              <h3>We Are OpenDot</h3>
+              <p>
+                At Opendot, we're driven by a singular passion: to revolutionize the way businesses operate in the digital landscape. We understand the ever-evolving demands of the modern market, and we're here to provide cutting-edge solutions that empower organizations to thrive in the digital age.
+              </p>
+              <p>
+                Founded by a team of forward-thinking tech enthusiasts, Opendot brings together years of industry experience and expertise in software development, web services, and digital transformation. Our mission is simple yet.................
+              </p>
+              <a href="{% url 'about' %}"> Read More </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- end about section -->
+
+    <!-- why section -->
+
+    <section class="why_section layout_padding">
+      <div class="container">
+        <div class="heading_container heading_center">
+          <h2>Why Choose <span>Us</span></h2>
+        </div>
+        <div class="why_container">
+          <div class="box">
+            <div class="img-box">
+              <img src="{% static 'website/images/Expert.png' %}" alt="" />
+            </div>
+            <div class="detail-box">
+              <h5>Expert Development</h5>
+              <p>Our team comprises expert developers with a wealth of experience in crafting high-quality, 
+                efficient, and scalable web solutions tailored to your unique needs. From custom web 
+                applications to e-commerce platforms, we deliver solutions that drive results and exceed expectations.</p>
+            </div>
+          </div>
+          <div class="box">
+            <div class="img-box">
+              <img src="{% static 'website/images/reliability.png' %}" alt="" />
+            </div>
+            <div class="detail-box">
+              <h5>Reliability</h5>
+              <p>We guarantee reliable services, ensuring your website operates smoothly with
+                minimal downtime, backed by robust infrastructure and support. Our proactive monitoring and
+                 maintenance ensure that your website remains secure, stable, and accessible to your audience at all times.</p>
+            </div>
+          </div>
+          <div class="box">
+            <div class="img-box">
+              <img src="{% static 'website/images/security.png' %}" alt="" />
+            </div>
+            <div class="detail-box">
+              <h5>Security</h5>
+              <p>We prioritize the security of your website, implementing robust measures to protect
+                 against cyber threats and vulnerabilities. From SSL encryption to regular security audits and
+                  patches, we ensure that your online presence is safeguarded against potential risks, giving you
+                   peace of mind and protecting your reputation.</p>
+            </div>
+          </div>
+        </div>
+        <div class="btn-box">
+          <a href="{% url 'why' %}"> Read More </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- end why section -->
+
+     <!-- Video Section -->
+     <!-- <section class="video-section">
+      <div class="video-container">
+          <video id="video-player" controls>
+              <source src="{% static 'website/images/videogen.mp4' %}" type="video/mp4">
+              Your browser does not support the video tag.
+          </video>
+      </div>
+  </section> -->
+
+    <!-- client section -->
+{%comment%}
+    <section class="client_section layout_padding">
+      <div class="container">
+        <div class="heading_container heading_center psudo_white_primary mb_45">
+          <h2>What says our <span>Customers</span></h2>
+        </div>
+        <div class="carousel-wrap">
+          <div class="owl-carousel client_owl-carousel">
+            <div class="item">
+              <div class="box">
+                <div class="img-box">
+                  <img
+                    src="{% static 'website/images/client1.jpg' %}"
+                    alt=""
+                    class="box-img"
+                  />
+                </div>
+                <div class="detail-box">
+                  <div class="client_id">
+                    <div class="client_info">
+                      <h6>LusDen</h6>
+                      <p>magna aliqua. Ut</p>
+                    </div>
+                    <i class="fa fa-quote-left" aria-hidden="true"></i>
+                  </div>
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                    do eiusmod tempor incididunt ut labore et dolore magna
+                    aliqua. Ut enim ad minim veniam, quis
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="item">
+              <div class="box">
+                <div class="img-box">
+                  <img
+                    src="{% static 'website/images/client2.jpg' %}"
+                    alt=""
+                    class="box-img"
+                  />
+                </div>
+                <div class="detail-box">
+                  <div class="client_id">
+                    <div class="client_info">
+                      <h6>Zen Court</h6>
+                      <p>magna aliqua. Ut</p>
+                    </div>
+                    <i class="fa fa-quote-left" aria-hidden="true"></i>
+                  </div>
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                    do eiusmod tempor incididunt ut labore et dolore magna
+                    aliqua. Ut enim ad minim veniam, quis
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="item">
+              <div class="box">
+                <div class="img-box">
+                  <img
+                    src="{% static 'website/images/client1.jpg' %}"
+                    alt=""
+                    class="box-img"
+                  />
+                </div>
+                <div class="detail-box">
+                  <div class="client_id">
+                    <div class="client_info">
+                      <h6>LusDen</h6>
+                      <p>magna aliqua. Ut</p>
+                    </div>
+                    <i class="fa fa-quote-left" aria-hidden="true"></i>
+                  </div>
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                    do eiusmod tempor incididunt ut labore et dolore magna
+                    aliqua. Ut enim ad minim veniam, quis
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="item">
+              <div class="box">
+                <div class="img-box">
+                  <img
+                    src="{% static 'website/images/client2.jpg' %}"
+                    alt=""
+                    class="box-img"
+                  />
+                </div>
+                <div class="detail-box">
+                  <div class="client_id">
+                    <div class="client_info">
+                      <h6>Zen Court</h6>
+                      <p>magna aliqua. Ut</p>
+                    </div>
+                    <i class="fa fa-quote-left" aria-hidden="true"></i>
+                  </div>
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                    do eiusmod tempor incididunt ut labore et dolore magna
+                    aliqua. Ut enim ad minim veniam, quis
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+{%endcomment%}
+    <!-- end client section -->
+
+    {% endblock content%}

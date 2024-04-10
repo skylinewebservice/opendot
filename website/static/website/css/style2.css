@@ -1,0 +1,136 @@
+.logo-img32 {
+  width: 10px; /* Adjust the width as needed */
+  height: auto; /* Maintains aspect ratio */
+}
+.contact_section {
+    padding: 80px 0;
+    background-color: #f8f8f9;
+  }
+  
+  .contact_info {
+    margin-top: 40px;
+  }
+  
+  .info_box {
+    margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .info_box .icon {
+    width: 40px;
+    height: 40px;
+    background-color: #007bff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 20px;
+  }
+  
+  .info_box .icon i {
+    color: #fff;
+  }
+  
+  .detail h5 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: #333;
+  }
+  
+  .detail p {
+    font-size: 16px;
+    color: #666;
+  }
+  
+  .contact_form {
+    margin-top: 50px;
+  }
+  
+  .contact_form h3 {
+    font-size: 24px;
+    margin-bottom: 30px;
+    color: #333;
+  }
+  
+  .contact_form input,
+  .contact_form textarea {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .contact_form textarea {
+    height: 150px;
+  }
+  
+  .contact_form button {
+    padding: 15px 40px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .contact_form button:hover {
+    background-color: #0056b3;
+  }
+  .icon {
+    width: 60px; /* Adjust the width and height to fit your design */
+    height: 60px;
+    background-color: #007bff; /* Blue circle background color */
+    border-radius: 50%; /* Make the container a circle */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .icon svg {
+    width: 50%; /* Adjust the size of the SVG icon relative to its container */
+    height: 50%;
+    fill: white; /* Change the color of the icon to white */
+  }
+/* Reset default margin and padding */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Apply styles to the container */
+.container {
+  max-width: 1000px; /* Adjust the max-width as needed */
+  margin: 0 auto; /* Center the container horizontally */
+  padding: 20px;
+}
+
+/* Apply styles to the video section */
+.video-section {
+  margin-top: 20px; /* Adjust spacing as needed */
+}
+
+/* Apply styles to the video container */
+.video-container {
+  width: 100%; /* Set width to match parent container */
+  position: relative;
+  padding-bottom: 20%; /* Aspect ratio: 16:9 (adjust as needed) */
+}
+
+/* Apply styles to the video player */
+#video-player {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+.active-tab {
+  color: rgba(255, 0, 0, 0.856); /* Change this to your desired blue color */
+  /* You can add additional styling properties here */
+}
+
+.clicked-tab {
+  color: white; /* White color for clicked tab */
+}

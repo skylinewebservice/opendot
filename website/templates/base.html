@@ -1,0 +1,243 @@
+{% load static %}
+<html>
+  <head>
+    <!-- Basic -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!-- Mobile Metas -->
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <!-- Site Metas -->
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <link
+      rel="shortcut icon"
+      href="{% static 'website/favicon/favicon.png' %}"
+      type=""
+    />
+
+    <title>OpenDot</title>
+
+    <!-- bootstrap core css -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'website/css/bootstrap.css' %}"
+    />
+
+    <!-- fonts style -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+     integrity="sha512-tb7eLo1W0Vp4oDFftmhazMKg58LYlKPO8X2nQGCUhXv6sbQQy6VVXNdoioMg8hVJF9oIZ0Mp9A2D38Rg3l/Fpw==" 
+     crossorigin="anonymous" 
+     referrerpolicy="no-referrer" />
+
+    <!--owl slider stylesheet -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"
+    />
+
+    <!-- font awesome style -->
+    <link href="{% static 'website/css/font-awesome.min.css' %}" rel="stylesheet" />
+
+    <!-- Custom styles for this template -->
+    <link href="{% static 'website/css/style.css' %}" rel="stylesheet" />
+    <link href="{% static 'website/css/style2.css' %}" rel="stylesheet" />
+    <!-- responsive style -->
+    <link href="{% static 'website/css/responsive.css' %}" rel="stylesheet" />
+  </head>
+
+  <body>
+
+    {% block navigation %}
+
+    <div class="hero_area">
+      <div class="hero_bg_box">
+        <div class="bg_img_box">
+          <img src="{% static 'website/images/blueblackbg.png' %}" alt="" />
+        </div>
+      </div>
+      
+      <!-- header section strats -->
+      <header class="header_section">
+        <div class="container-fluid">
+          <nav class="navbar navbar-expand-lg custom_nav-container">
+            <a class="navbar-brand" href="{% url 'index' %}">
+              <img src="{% static 'website/images/opendotlogo2.png' %}" alt="OpenDot Logo" class="logo-img32" style="width: 250px;">
+          </a>
+          
+            <button
+              class="navbar-toggler"
+              type="button"
+              data-toggle="collapse"
+              data-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <span class=""> </span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav">
+                <li class="nav-item active {% if request.path == '/' %}active{% endif %}">
+                    <a class="nav-link {% if request.path == '/' %}active-tab{% endif %}"  href="{% url 'index' %}">Home</a>
+                  </li>
+                  <li class="nav-item {% if request.path == '/about/' %}active{% endif %}">
+                      <a class="nav-link {% if request.path == '/about/' %}active-tab{% endif %}" href="{% url 'about' %}">about</a>
+                  </li>
+                  <li class="nav-item {% if request.path == '/service/' %}active{% endif %}">
+                    <a class="nav-link {% if request.path == '/service/' %}active-tab{% endif %}" href="{% url 'service' %}">Services</a>
+                  </li>
+                  <li class="nav-item {% if request.path == '/why/' %}active{% endif %}">
+                    <a class="nav-link {% if request.path == '/why/' %}active-tab{% endif %}" href="{% url 'why' %}">Why Us</a>
+                  </li>
+                  <li class="nav-item {% if request.path == '/contact/' %}active{% endif %}">
+                    <a class="nav-link {% if request.path == '/contact/' %}active-tab{% endif %}" href="{% url 'contact' %}">Contact</a>
+                  </li>
+                
+               
+              </ul>
+            </div>
+          </nav>
+        </div>
+      </header>
+
+      {% endblock navigation %}
+     
+
+
+      <main>{% block content %}
+
+        {% endblock content%}</main>  
+
+<!-- footer section -->
+          <!-- info section -->
+
+    <section class="info_section layout_padding2">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-6 col-lg-3 info_col">
+              <div class="info_contact">
+                <h4>Address</h4>
+                <div class="contact_link_box">
+                  <a href="">
+                    <i class="fa fa-map-marker" aria-hidden="true"></i>
+                    <span>[47 Eban AVE, Tema Metropolis, Greater Accra Region]</span>
+                  </a>
+                  <a href="">
+                    <i class="fa fa-phone" aria-hidden="true"></i>
+                    <span> 0537882387 </span>
+                  </a>
+                  <a href="">
+                    <i class="fa fa-envelope" aria-hidden="true"></i>
+                    <span> info@skylinewebservices.com </span>
+                  </a>
+                </div>
+              </div>
+              <div class="info_social">
+                <a href="">
+                  <i class="fa fa-facebook" aria-hidden="true"></i>
+                </a>
+                <a href="">
+                  <i class="fa fa-twitter" aria-hidden="true"></i>
+                </a>
+                <a href="">
+                  <i class="fa fa-linkedin" aria-hidden="true"></i>
+                </a>
+                <a href="https://www.instagram.com/skyline.webservice/?igsh=YTQwZjQ0NmI0OA%3D%3D">
+                  <i class="fa fa-instagram" aria-hidden="true"></i>
+              </a>
+              <a href="https://www.snapchat.com/add/skylnwbsrvc?invite_id=AY3s7sdu&locale=en_GH&share_id=3jTMV4FNTvyZuVgqA67hZQ&sid=cbe3dfbd1cdf4dc2a817222b2e0c78ef">
+                <i class="fa fa-snapchat" aria-hidden="true"></i>
+            </a>
+              </div>
+            </div>
+            <div class="col-md-6 col-lg-3 info_col">
+              <div class="info_detail">
+                <h4>Info</h4>
+                <p>
+                  At Opendot webservices, we specialize in creating stunning and effective websites tailored
+                  to meet your unique needs. Whether you're a small business looking to
+                   establish your online presence or
+                  a large corporation seeking to revamp your digital 
+                  platform, we've got you covered.
+                </p>
+              </div>
+            </div>
+            <div class="col-md-6 col-lg-2 mx-auto info_col">
+              <div class="info_link_box">
+                <h4>Links</h4>
+                <div class="info_links">
+                  <a class="active" href="{% url 'index' %}"> Home </a>
+                  <a class="" href="{% url 'about' %}"> About </a>
+                  <a class="" href="{% url 'service' %}"> Services </a>
+                  <a class="" href="{% url 'why' %}"> Why Us </a>
+                  <a class="" href="{% url 'contact' %}"> Contact </a>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 col-lg-3 info_col">
+              <h4>Subscribe</h4>
+              <form action="#">
+                <input type="text" placeholder="Enter email" />
+                <button type="submit">Subscribe</button>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="container">
+            <div class="row mt-5">
+                <div class="col-md-12 text-center">
+    
+                    <p class="copyright">
+                        Copyright &copy;
+                        <script>document.write(new Date().getFullYear());</script> All rights reserved | <a href="https://opendotewebservice.com" target="_blank">Opendot Webservice</a> 
+                    </p>
+                </div>
+        </div>
+          
+      </section>
+  
+      <!-- end info section -->
+      <!-- endfooter section -->
+  
+      <!-- jQery -->
+      <script
+        type="text/javascript"
+        src="{% static 'website/js/jquery-3.4.1.min.js' %}"
+      ></script>
+      <!-- popper js -->
+      <script
+        src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"
+      ></script>
+      <!-- bootstrap js -->
+      <script
+        type="text/javascript"
+        src="{% static 'website/js/bootstrap.js' %}"
+      ></script>
+      <!-- owl slider -->
+      <script
+        type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"
+      ></script>
+      <!-- custom js -->
+      <script type="text/javascript" src="{% static 'website/js/custom.js' %}"></script>
+      <!-- extra js -->
+      <script type="text/javascript" src="{% static 'website/js/extra.js' %}"></script>
+      <!-- Google Map -->
+      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCh39n5U-4IoWpsVGUHWdqB6puEkhRLdmI&amp;callback=myMap"></script>
+      <!-- End Google Map -->
+    </body>
+  </html>
+  

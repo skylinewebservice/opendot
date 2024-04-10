@@ -1,0 +1,83 @@
+{% extends 'base.html' %} 
+{% load static %} 
+{% block content%}
+
+    <!-- why section -->
+
+    <section class="why_section layout_padding" style="background-color: #f8f8f9;">
+      <div class="container">
+        <div class="heading_container heading_center">
+          <h2>Why Choose <span>Us</span></h2>
+        </div>
+        <div class="why_container">
+          <div class="box">
+            <div class="img-box">
+              <img src="{% static 'website/images/Expert.png' %}" alt="" />
+            </div>
+            <div class="detail-box">
+              <h5>Expert Development</h5>
+              <p>Our team comprises expert developers with a wealth of experience in crafting high-quality, 
+                efficient, and scalable web solutions tailored to your unique needs. From custom web 
+                applications to e-commerce platforms, we deliver solutions that drive results and exceed expectations.</p>
+            </div>
+          </div>
+          <div class="box">
+            <div class="img-box">
+              <img src="{% static 'website/images/reliability.png' %}" alt="" />
+            </div>
+            <div class="detail-box">
+              <h5>Reliability</h5>
+              <p>We guarantee reliable services, ensuring your website operates smoothly with
+                minimal downtime, backed by robust infrastructure and support. Our proactive monitoring and
+                 maintenance ensure that your website remains secure, stable, and accessible to your audience at all times.</p>
+            </div>
+          </div>
+          <div class="box">
+            <div class="img-box">
+              <img src="{% static 'website/images/security.png' %}" alt="" />
+            </div>
+            <div class="detail-box">
+              <h5>Security</h5>
+              <p>We prioritize the security of your website, implementing robust measures to protect
+                 against cyber threats and vulnerabilities. From SSL encryption to regular security audits and
+                  patches, we ensure that your online presence is safeguarded against potential risks, giving you
+                   peace of mind and protecting your reputation.</p>
+            </div>
+          </div>
+          <div class="box">
+            <div class="img-box">
+              <img src="{% static 'website/images/satisfaction.png' %}" alt="" />
+            </div>
+            <div class="detail-box">
+              <h5>Customer Satisfaction</h5>
+              <p>We embrace innovation and continuously explore new technologies and trends to provide cutting-edge solutions that drive your
+                business forward. Our client-centric approach ensures that we understand your goals and objectives, allowing 
+                us to deliver solutions that not only meet but 
+                exceed your expectations, leading to long-term partnerships and mutual success.</p>
+            </div>
+          </div>
+          <div class="box">
+            <div class="img-box">
+              <img src="{% static 'website/images/proventrack.png' %}" alt="" />
+            </div>
+            <div class="detail-box">
+              <h5>Proven Track Record</h5>
+              <p>With a history of successful projects and satisfied clients,
+                 we have established a solid reputation for delivering high-quality web solutions. 
+                 Our portfolio showcases our expertise across various industries and demonstrates our ability 
+                 to overcome challenges and deliver exceptional results. Trust us to bring your vision to life 
+                 and elevate your online presence to new heights.</p>
+            </div>
+          </div>
+        </div>
+        <div class="btn-box">
+          <a href="">Contact Us </a>
+        </div>
+      </div>
+    </section>
+    
+    <!-- end why section -->
+
+    {% endblock content%}
+  </body>
+</html>
