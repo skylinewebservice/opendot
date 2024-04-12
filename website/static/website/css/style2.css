@@ -126,10 +126,7 @@
   width: 100%;
   height: 100%;
 }
-.active-tab {
-  color: rgba(255, 0, 0, 0.856); /* Change this to your desired blue color */
-  /* You can add additional styling properties here */
-}
+
 
 .clicked-tab {
   color: white; /* White color for clicked tab */
