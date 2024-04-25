@@ -131,3 +131,11 @@
 .clicked-tab {
   color: white; /* White color for clicked tab */
 }
+.about_section {
+  background-color: #023445; /* White background */
+  color: #ffffff; /* Black text */
+}
+.footer{
+  background-color: #002e3d;
+  color:#ffffff ;
+}
