@@ -18,3 +18,21 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     });
 });
+
+
+
+document.addEventListener("DOMContentLoaded", function() {
+    var navLinks = document.querySelectorAll(".navbar-nav .nav-link");
+
+    navLinks.forEach(function(link) {
+      link.addEventListener("click", function() {
+        // Remove active class from all links
+        navLinks.forEach(function(link) {
+          link.classList.remove("active");
+        });
+
+        // Add active class to clicked link
+        this.classList.add("active");
+      });
+    });
+  });

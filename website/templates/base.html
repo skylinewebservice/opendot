@@ -66,61 +66,59 @@
         }
       }
       </style>
-    {% block navigation %}
-
-    <div class="hero_area">
-      <div class="hero_bg_box">
-        <div class="bg_img_box">
-          <img src="{% static 'website/images/blueblackbg.png' %}" alt="" />
-        </div>
-      </div>
+{% block navigation %}
+<div class="hero_area">
+  <div class="hero_bg_box">
+    <div class="bg_img_box">
+      <img src="{% static 'website/images/blueblackbg.png' %}" alt="" />
+    </div>
+  </div>
+  
+  <!-- header section starts -->
+  <header class="header_section">
+    <div class="container-fluid">
+      <nav class="navbar navbar-expand-lg custom_nav-container">
+        <a class="navbar-brand" href="{% url 'index' %}">
+          <img src="{% static 'website/images/opendotlogo2.png' %}" alt="OpenDot Logo" class="logo-img32" style="width: 250px;">
+      </a>
       
-      <!-- header section strats -->
-      <header class="header_section">
-        <div class="container-fluid">
-          <nav class="navbar navbar-expand-lg custom_nav-container">
-            <a class="navbar-brand" href="{% url 'index' %}">
-              <img src="{% static 'website/images/opendotlogo2.png' %}" alt="OpenDot Logo" class="logo-img32" style="width: 250px;">
-          </a>
-          
-            <button
-              class="navbar-toggler"
-              type="button"
-              data-toggle="collapse"
-              data-target="#navbarSupportedContent"
-              aria-controls="navbarSupportedContent"
-              aria-expanded="false"
-              aria-label="Toggle navigation"
-            >
-              <span class=""> </span>
-            </button>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class=""> </span>
+        </button>
 
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-              <ul class="navbar-nav">
-                <li class="nav-item active {% if request.path == '/' %}active{% endif %}" >
-                    <a class="nav-link {% if request.path == '/' %}active-tab{% endif %}"  href="{% url 'index' %}">Home</a>
-                  </li>
-                  <li class="nav-item {% if request.path == '/about/' %}active{% endif %}">
-                      <a class="nav-link {% if request.path == '/about/' %}active-tab{% endif %}" href="{% url 'about' %}">about</a>
-                  </li>
-                  <li class="nav-item {% if request.path == '/service/' %}active{% endif %}">
-                    <a class="nav-link {% if request.path == '/service/' %}active-tab{% endif %}" href="{% url 'service' %}">Services</a>
-                  </li>
-                  <li class="nav-item {% if request.path == '/why/' %}active{% endif %}">
-                    <a class="nav-link {% if request.path == '/why/' %}active-tab{% endif %}" href="{% url 'why' %}">Why Us</a>
-                  </li>
-                  <li class="nav-item {% if request.path == '/contact/' %}active{% endif %}">
-                    <a class="nav-link {% if request.path == '/contact/' %}active-tab{% endif %}" href="{% url 'contact' %}">Contact</a>
-                  </li>
-                
-               
-              </ul>
-            </div>
-          </nav>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav">
+            <li class="nav-item {% if request.path == '/' %}active{% endif %}">
+              <a class="nav-link {% if request.path == '/' %}active-tab{% endif %}" href="{% url 'index' %}">Home</a>
+            </li>
+            <li class="nav-item {% if request.path == '/about/' %}active{% endif %}">
+              <a class="nav-link {% if request.path == '/about/' %}active-tab{% endif %}" href="{% url 'about' %}">About</a>
+            </li>
+            <li class="nav-item {% if request.path == '/service/' %}active{% endif %}">
+              <a class="nav-link {% if request.path == '/service/' %}active-tab{% endif %}" href="{% url 'service' %}">Services</a>
+            </li>
+            <li class="nav-item {% if request.path == '/why/' %}active{% endif %}">
+              <a class="nav-link {% if request.path == '/why/' %}active-tab{% endif %}" href="{% url 'why' %}">Why Us</a>
+            </li>
+            <li class="nav-item {% if request.path == '/contact/' %}active{% endif %}">
+              <a class="nav-link {% if request.path == '/contact/' %}active-tab{% endif %}" href="{% url 'contact' %}">Contact</a>
+            </li>
+          </ul>
         </div>
-      </header>
+      
+      </nav>
+    </div>
+  </header>
+{% endblock navigation %}
 
-      {% endblock navigation %}
      
 
 
