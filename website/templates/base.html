@@ -108,6 +108,44 @@
             <li class="nav-item {% if request.path == '/why/' %}active{% endif %}">
               <a class="nav-link {% if request.path == '/why/' %}active-tab{% endif %}" href="{% url 'why' %}">Why Us</a>
             </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Product
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <div class="container" style="text-align: center;">
+                      <div class="row">
+                          <div class="col-sm-4">
+                              <div class="card" id="hosting">
+                                  <div class="card-body">
+                                      <h5 class="card-title">HOSTING</h5>
+                                      <p class="card-text">Description of Product 1.</p>
+                                      <a href="{% url 'products' %}" class="btn btn-primary">View Details</a>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="col-sm-4">
+                              <div class="card" id="starlink">
+                                  <div class="card-body">
+                                      <h5 class="card-title">STARLINK</h5>
+                                      <p class="card-text">Description of Product 2.</p>
+                                      <a href="#" class="btn btn-primary">View Details</a>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="col-sm-4">
+                              <div class="card" id="solar">
+                                  <div class="card-body">
+                                      <h5 class="card-title">SOLAR</h5>
+                                      <p class="card-text">Description of Product 3.</p>
+                                      <a href="#" class="btn btn-primary">View Details</a>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </li>
             <li class="nav-item {% if request.path == '/contact/' %}active{% endif %}">
               <a class="nav-link {% if request.path == '/contact/' %}active-tab{% endif %}" href="{% url 'contact' %}">Contact</a>
             </li>

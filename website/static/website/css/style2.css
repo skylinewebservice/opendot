@@ -139,3 +139,115 @@
   background-color: #002e3d;
   color:#ffffff ;
 }
+
+
+/* Custom styles for the dropdown menu */
+/* Custom styles for the dropdown menu */
+@media (min-width: 992px) {
+  .navbar .dropdown-menu {
+      width: 80vw; /* Set the width to 100% of the viewport width */
+      left: auto; /* Set left to auto to remove alignment */
+      right: 0; /* Align the dropdown to the right edge of the screen */
+      top: 100%; /* Position the dropdown below the navbar */
+      position: absolute; /* Use absolute positioning */
+      padding: 20px; /* Add padding for better spacing */
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Optional: Add a shadow for better visibility */
+      background-color: rgba(12, 40, 68, 0.3); /* Set background color with transparency */
+      z-index: 1000; /* Ensure the dropdown appears above other elements */
+  }
+}
+
+/* Style for individual cards */
+.navbar .dropdown-menu .card {
+  margin-bottom: 20px; /* Add bottom margin for spacing between cards */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Add box shadow on hover */
+}
+.navbar .dropdown-menu .card:hover {
+  background-color: #f8f9fa; /* Change background color on hover */
+  box-shadow: 0 4px 8px rgba(182, 181, 181, 0.8); /* Add box shadow on hover */
+  transition: background-color 0.3s, box-shadow 0.3s; /* Add smooth transition */
+}
+/* Style for card titles */
+.navbar .dropdown-menu .card-title {
+  color: #f5f5f5;
+  padding-top: 3%;
+  font-size: 22px; /* Adjust font size of card title */
+  margin-bottom: 10px; /* Add bottom margin for spacing */
+}
+.navbar .dropdown-menu .card {
+  background-color: #93a0ad;
+}
+
+
+/* Style for card text */
+.navbar .dropdown-menu .card-text {
+  padding-top: 7%;
+  color: #f5f5f5; /* Set color of card text */
+}
+
+/* Style for card buttons */
+.navbar .dropdown-menu .btn {
+  background-color: #007bff; /* Set background color of button */
+  color: #ffffff; /* Set text color of button */
+}
+
+/* Optional: Adjust individual dropdown items for better spacing */
+.navbar .dropdown-item {
+  padding: 10px 20px; /* Adjust padding */
+  color: #333; /* Set text color */
+}
+
+.navbar .dropdown-item:hover {
+  background-color: #007bff; /* Background color on hover */
+  color: rgba(255, 255, 255, 0.192); /* Text color on hover */
+}
+
+/* Optional: Adjust the divider */
+.navbar .dropdown-divider {
+  margin: 10px 0; /* Adjust margin for divider */
+}
+
+/* Make the dropdown deploy on hover */
+.navbar .nav-item.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+/* Change cursor to pointer */
+.navbar .nav-link.dropdown-toggle {
+  cursor: pointer;
+}
+
+/* Ensure the dropdown menu doesn't disappear when hovered */
+.navbar .dropdown-menu:hover {
+  display: block;
+}
+
+#hosting {
+  background-image: url('/static/website/images/hosting.jpg');
+  background-size: cover;
+  background-position: center;
+  height: 200px;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#starlink {
+  background-image: url('/static/website/images/starlink.png');
+  background-size: cover;
+  background-position: center;
+  height: 200px; 
+  flex-direction: column;
+  justify-content: center;
+}
+#solar {
+  background-image: url('/static/website/images/solar.jpg');
+  background-size: cover;
+  background-position: center;
+  height: 200px;
+  flex-direction: column;
+  justify-content: center;
+}
+.card-body {
+  background: rgba(0, 0, 0, 0.5); 
+  padding: auto;
+}

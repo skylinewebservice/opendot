@@ -36,3 +36,16 @@ document.addEventListener("DOMContentLoaded", function() {
       });
     });
   });
+
+  // Ensure dropdown opens on hover for touch devices and mouse hover
+document.querySelectorAll('.navbar .nav-item.dropdown').forEach(function(dropdown) {
+  dropdown.addEventListener('mouseenter', function() {
+      var dropdownMenu = dropdown.querySelector('.dropdown-menu');
+      dropdownMenu.classList.add('show');
+  });
+
+  dropdown.addEventListener('mouseleave', function() {
+      var dropdownMenu = dropdown.querySelector('.dropdown-menu');
+      dropdownMenu.classList.remove('show');
+  });
+});
