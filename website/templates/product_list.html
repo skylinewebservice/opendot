@@ -1,0 +1,121 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load humanize %}
+
+
+{% block extra_css %}
+<link href="{% static 'website/css/productlist.css' %}" rel="stylesheet" />
+
+{% endblock %}
+
+    
+    {% block content%}
+    <!-- Navigation Bar -->
+ <section style="background-color: white;">
+    <nav class="navbar">
+        <div class="logo"><a href="{% url 'product_list' %}">OpenDot Shop</a></div>
+        <div class="cart">
+            <span class="cart-count">0</span>
+            <a href="{% url 'cart' %}"><img src="{% static 'website/images/cart-icon.svg' %}" alt="Cart"></a>
+        </div>
+        <div class="wishlist">
+            <span class="wishlist-count">0</span>
+            <a href="{% url 'wishlist' %}"><img src="{% static 'website/images/heart1.svg' %}" alt="Wishlist"></a>
+        </div>
+    </nav>
+
+    <h1>Product List</h1>
+    <div class="shop-product-container">
+        {% for product in products %}
+            <div class="shop-card">
+                <img src="{% static product.images.0 %}" alt="{{ product.name }}">
+                <div class="shop-card-content">
+                    <p>{{ product.name }}</p>
+                    <a href="{% url 'product_detail' product.pk %}" style="text-decoration: underline;">Product details</a>
+                    <p>₵{{ product.price|intcomma }}</p>
+                    <div class="button-container">
+                        <a href="#" class="button-circle add-to-cart" data-product="{{ product.name }}" data-price="{{ product.price }}" data-pk="{{ product.pk }}">
+                            <img src="{% static 'website/images/basket.svg' %}" alt="Basket Icon">
+                            <!-- <div class="tooltip">Add to Cart</div> -->
+                        </a>
+                        <a href="#" class="button-circle add-to-wishlist" data-product="{{ product.name }}" data-price="{{ product.price }}" data-pk="{{ product.pk }}">
+                            <img src="{% static 'website/images/heart1.svg' %}" alt="Heart Icon">
+                            <!-- <div class="tooltip">Add to Wishlist</div> -->
+                        </a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+    <script>
+        document.querySelectorAll('.add-to-wishlist').forEach(button => {
+            button.addEventListener('click', function(event) {
+                event.preventDefault();
+                const productPk = this.getAttribute('data-pk');
+                fetch("{% url 'add_to_wishlist' pk=0 %}".replace('0', productPk), {
+                    method: 'POST',
+                    headers: {
+                        'X-CSRFToken': "{{ csrf_token }}",
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ product_id: productPk })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    alert(data.message);
+                    updateWishlistCount();
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+            });
+        });
+
+        function updateWishlistCount() {
+            fetch("{% url 'wishlist_count' %}")
+                .then(response => response.json())
+                .then(data => {
+                    document.querySelector('.wishlist-count').textContent = data.wishlist_count;
+                })
+                .catch(error => console.error('Error fetching wishlist count:', error));
+        }
+
+        updateWishlistCount();
+
+        document.querySelectorAll('.add-to-cart').forEach(button => {
+            button.addEventListener('click', function(event) {
+                event.preventDefault();
+                const productPk = this.getAttribute('data-pk');
+                fetch("{% url 'add_to_cart' pk=0 %}".replace('0', productPk), {
+                    method: 'POST',
+                    headers: {
+                        'X-CSRFToken': "{{ csrf_token }}",
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ product_id: productPk })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    alert(data.message);
+                    updateCartCount();
+                })
+                .catch(error => console.error('Error:', error));
+            });
+        });
+
+        function updateCartCount() {
+            fetch("{% url 'cart_count' %}")
+                .then(response => response.json())
+                .then(data => {
+                    document.querySelector('.cart-count').textContent = data.cart_count;
+                })
+                .catch(error => console.error('Error fetching cart count:', error));
+        }
+
+        updateCartCount();
+    </script>
+
+</section>    
+      {% endblock content%}
+

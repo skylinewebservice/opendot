@@ -1,0 +1,167 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Detail - OpenDot Shop</title>
+    <link href="{% static 'website/css/productdetail.css' %}" rel="stylesheet" />
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="logo">OpenDot Shop</div>
+        <div class="cart">
+            <span class="cart-count">0</span>
+            <a href="{% url 'checkout' %}"><img src="{% static 'website/images/cart-icon.svg' %}" alt="Cart"></a>
+        </div>
+    </nav>
+
+    <div class="main-container">
+        <!-- Categories Section -->
+        <div class="categories">
+            <h2>Categories</h2>
+            <ul>
+                <li><a href="#" data-category="all">All</a></li>
+                <li><a href="#" data-category="category1">SOLAR</a></li>
+                <li><a href="#" data-category="category2">STARLINK</a></li>
+                <li><a href="#" data-category="category3">HOSTING</a></li>
+            </ul>
+        </div>
+
+        <!-- Product Detail Section -->
+        <div class="card product-detail">
+            <div class="card">
+                <div class="carousel-container">
+                    <div class="carousel">
+                        <img src="{% static 'website/images/products/01-a.jpg' %}" alt="Product Image 1" class="active">
+                        <img src="{% static 'website/images/products/01-b.jpg' %}" alt="Product Image 2">
+                        <img src="{% static 'website/images/products/01-c.jpg' %}" alt="Product Image 3">
+                        <img src="{% static 'website/images/products/01-d.jpg' %}" alt="Product Image 4">
+                        <img src="{% static 'website/images/products/01-e.png' %}" alt="Product Image 5">
+                        <img src="{% static 'website/images/products/01-f.png' %}" alt="Product Image 6">
+                        <img src="{% static 'website/images/products/01-g.png' %}" alt="Product Image 7">
+                        <img src="{% static 'website/images/products/01-h.png' %}" alt="Product Image 8">
+                        <button class="prev">&#10094;</button>
+                        <button class="next">&#10095;</button>
+                    </div>
+                    <div class="preview">
+                        <img src="{% static 'website/images/products/01-a.jpg' %}" alt="Product Image 1" class="active"
+                            data-index="0">
+                        <img src="{% static 'website/images/products/01-b.jpg' %}" alt="Product Image 2">
+                        <img src="{% static 'website/images/products/01-c.jpg' %}" alt="Product Image 3">
+                        <img src="{% static 'website/images/products/01-d.jpg' %}" alt="Product Image 4">
+                        <img src="{% static 'website/images/products/01-e.png' %}" alt="Product Image 5">
+                        <img src="{% static 'website/images/products/01-f.png' %}" alt="Product Image 6">
+                        <img src="{% static 'website/images/products/01-g.png' %}" alt="Product Image 7">
+                        <img src="{% static 'website/images/products/01-h.png' %}" alt="Product Image 8">
+                    </div>
+                </div>
+                <div class="info">
+                    <h1>Product Name</h1>
+                    <div class="price">
+                        <p>$100</p>
+                        <a href="#" id="openPriceDetailModal"><img src="{% static 'website/images/details1.svg' %}" alt="">Price
+                            Details</a>
+                    </div>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. <br> Sed do eiusmod tempor incididunt ut labore
+                        et dolore <br> magna aliqua.</p>
+                    <div class="price-cart">
+                        <div>
+                            <a href="#" class="button button-primary button-with-icon buy-now" data-product="Product Name"
+                                data-image="{% static 'website/images/solar.jpg' %}" data-price="100">
+                                <img src="{% static 'website/images/buy.svg' %}" alt="Buy Icon"> Buy It Now
+                            </a>
+                            <a href="#" class="button button-secondary button-with-icon add-to-cart" data-product="Product Name"
+                                data-image="{% static 'website/images/solar.jpg' %}" data-price="100">
+                                <img src="{% static 'website/images/basket.svg' %}" alt="Basket Icon"> Add to Cart
+                            </a>
+                            <a href="#" class="button button-secondary button-with-icon add-to-wishlist"
+                                data-product="Product Name" data-image="{% static 'website/images/solar.jpg' %}"
+                                data-price="100" id="openModal">
+                                <img src="{% static 'website/images/heart1.svg' %}" alt="Heart Icon"> Add to Wishlist
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+
+
+
+
+
+
+
+
+
+        
+    <!-- Fullscreen Modal for Price Details -->
+    <div id="priceDetailModal" class="modal">
+        <div class="modal-content lightbox-dialog__window lightbox-dialog__window--animate">
+            <button class="lightbox-dialog__handle" type="button" aria-label="Maximize Lightbox Dialog"></button>
+            <div class="lightbox-dialog__header">
+                <h2 class="lightbox-dialog__title">
+                    <div class="ux-overlay__header">
+                        <span class="x-price-transparency--title">
+                            <span class="ux-textspans ux-textspans--BOLD">Price details</span>
+                        </span>
+                    </div>
+                </h2>
+                <button class="icon-btn lightbox-dialog__close" type="button" aria-label="Close the total savings overlay">
+                    <svg class="icon icon--close-16" focusable="false" aria-hidden="true">
+                        <use href="#icon-close-16"></use>
+                    </svg>
+                </button>
+            </div>
+            <div class="lightbox-dialog__main">
+                <div class="ux-overlay__content">
+                    <div class="x-price-transparency-overlay">
+                        <div class="x-price-transparency-overlay__items">
+                            <div class="ux-labels-values x-price-transparency-overlay__sale-listing">
+                                <span class="ux-textspans ux-textspans--SECONDARY">Was</span>
+                                <span class="ux-textspans ux-textspans--SECONDARY ux-textspans--STRIKETHROUGH">$147.97</span>
+                            </div>
+                            <div class="ux-labels-values x-price-transparency-overlay__sale-listing">
+                                <span class="ux-textspans ux-textspans--SECONDARY">(11% off) -$16.28</span>
+                            </div>
+                        </div>
+                        <div class="x-price-transparency-overlay__items">
+                            <div class="ux-labels-values x-price-transparency-overlay__item-shipping">
+                                <span class="ux-textspans">Item price</span>
+                                <span class="ux-textspans">$131.69</span>
+                            </div>
+                            <div class="ux-labels-values x-price-transparency-overlay__item-shipping">
+                                <span class="ux-textspans">Shipping</span>
+                                <span class="ux-textspans">$8.98</span>
+                            </div>
+                        </div>
+                        <div class="x-price-transparency-overlay__items">
+                            <div class="ux-labels-values x-price-transparency-overlay__estimated-total">
+                                <span class="ux-textspans ux-textspans--BOLD">Estimated total</span>
+                                <span class="ux-textspans ux-textspans--BOLD">$102.27</span>
+                            </div>
+                            <div class="ux-labels-values x-price-transparency-overlay__estimated-total">
+                                <span class="ux-textspans ux-textspans--POSITIVE">You save: $11.84</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Fullscreen Modal for Image Gallery -->
+    <div id="myModal" class="modal">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="img01">
+    </div>
+
+    <script type="text/javascript">
+        const checkoutUrl = "{% url 'checkout' %}";
+    </script>
+    <script type="text/javascript" src="{% static 'website/js/productdetail.js' %}"></script>
+    
+</body>
+</html>

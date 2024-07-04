@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load humanize %}
+
+{% block extra_css %}
+<link href="{% static 'website/css/invoice.css' %}" rel="stylesheet" />
+<link href="{% static 'website/css/print.css' %}" rel="stylesheet" media="print" />
+
+{% endblock %}
+
+{% block content %}
+<section style="background-color: white;">
+    <div class="redirect"><a href="{% url 'cart' %}"> ← Back to Cart</a></div>
+    <div class="invoice-main-container">
+        <h1>Invoice</h1>
+        <div class="order-details">
+            <p><strong>Order ID:</strong> {{ order.order_id }}</p>
+            <p><strong>Order Date:</strong> {{ order.created_at|date:"F j, Y" }}</p>
+            <p><strong>Customer Name:</strong> {{ order.name }}</p>
+            <p><strong>Email:</strong> {{ order.email }}</p>
+            <p><strong>Phone Number:</strong> {{ order.phone_number }}</p>
+            <p><strong>Address:</strong> {{ order.address }}</p>
+            <p><strong>Payment Method:</strong> {{ order.get_payment_method_display }}</p>
+        </div>
+
+        <div class="product-details">
+            <h2>Products</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Image</th>
+                        <th>Name</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for product in products %}
+                    <tr>
+                        <td><img src="{% static product.image %}" alt="{{ product.name }}" width="50"></td>
+                        <td>{{ product.name }}</td>
+                        <td>₵{{ product.price|intcomma }}</td>
+                        <td>{{ product.quantity }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <div class="total-price">
+            <h3>Total Price: ₵{{ total_price|intcomma }}</h3>
+        </div>
+
+        <div class="print-button-container">
+            <button onclick="window.print()" class="print-button">Print Invoice</button>
+        </div>
+    </div>
+</section>
+{% endblock %}

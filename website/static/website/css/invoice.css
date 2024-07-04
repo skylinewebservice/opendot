@@ -1,0 +1,138 @@
+/* invoice.css */
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+.invoice-main-container{
+    width: 80%;
+    margin: 20px auto;
+    background-color: white;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.invoice-main-container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 100%;
+    width: 300px; 
+    height: 300px; /* Adjust size as needed */
+    background-image: url("{% static 'website/images/opendotlogo2.png' %}") ;
+    background-size: 500px;
+    background-repeat: no-repeat;
+    background-position: center;
+    transform: translate(-50%, -50%);
+    opacity: 0.1; /* Adjust opacity as needed */
+    z-index: -1;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+.order-details, .product-details, .total-price {
+    margin-bottom: 20px;
+}
+
+.order-details p, .product-details th, .product-details td, .total-price h3 {
+    font-size: 16px;
+    color: #555;
+}
+
+.order-details p {
+    margin: 5px 0;
+}
+
+.product-details h2 {
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.product-details table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.product-details th, .product-details td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+.product-details th {
+    background-color: #f8f8f8;
+}
+
+.product-details td img {
+    max-width: 50px;
+    height: auto;
+}
+
+.total-price h3 {
+    text-align: right;
+    color: #333;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .invoice-main-container {
+        width: 90%;
+        padding: 15px;
+    }
+
+    .order-details p, .product-details th, .product-details td, .total-price h3 {
+        font-size: 14px;
+    }
+
+    .product-details th, .product-details td {
+        padding: 8px;
+    }
+}
+
+@media (max-width: 480px) {
+    .invoice-main-container {
+        width: 95%;
+        padding: 10px;
+    }
+
+    .order-details p, .product-details th, .product-details td, .total-price h3 {
+        font-size: 12px;
+    }
+
+    .product-details table {
+        font-size: 12px;
+    }
+
+    .product-details th, .product-details td {
+        padding: 5px;
+    }
+
+    .total-price h3 {
+        font-size: 14px;
+    }
+}
+
+.print-button-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.print-button {
+    padding: 10px 20px;
+    background-color: #49D8B9;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.print-button:hover {
+    background-color: #38b3a0;
+}

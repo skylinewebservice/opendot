@@ -1,0 +1,239 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load humanize %}
+
+
+{% block extra_css %}
+<link href="{% static 'website/css/productdetail.css' %}" rel="stylesheet" />
+{% endblock %}
+
+   
+{% block content%}
+<section style="background-color: white;">
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="redirect"><a href="{% url 'product_list' %}"> ← Back to shop</a></div>
+        <div class="cart">
+            <span class="cart-count">0</span>
+            <a href="{% url 'cart' %}"><img src="{% static 'website/images/cart-icon.svg' %}" alt="Cart"></a>
+        </div>
+        <div class="wishlist">
+            <span class="wishlist-count">0</span>
+            <a href="{% url 'wishlist' %}">
+                <img src="{% static 'website/images/heart1.svg' %}" alt="Wishlist">
+            </a>
+        </div>
+    </nav>
+
+    <div class="main-container">
+        <!-- Categories Section -->
+        <div class="categories">
+            <h2>Categories</h2>
+            <ul>
+                <li><a href="#" data-category="all">All</a></li>
+                <li><a href="#" data-category="category1">SOLAR</a></li>
+                <li><a href="#" data-category="category2">STARLINK</a></li>
+                <li><a href="#" data-category="category3">HOSTING</a></li>
+            </ul>
+        </div>
+
+        <!-- Product Detail Section -->
+        <div class="shop-card product-detail">
+            <div class="carousel-container">
+                <div class="carousel">
+                    {% for image in product.images %}
+                    <img src="{% static image %}" alt="Product Image">
+                    {% endfor %}
+                    <button class="prev">&#10094;</button>
+                    <button class="next">&#10095;</button>
+                </div>
+                <div class="preview-carousel">
+                    <div class="preview-wrapper">
+                        <div class="preview">
+                            {% for image in product.images %}
+                            <img src="{% static image %}" alt="Product Image">
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="info">
+                <h1>{{ product.name }}</h1>
+                <div class="price">
+                    <p>₵{{ product.price|intcomma }}</p>
+                    <a href="#" id="openPriceDetailModal"><img src="{% static 'website/images/details1.svg' %}"
+                            alt="">Price Details</a>
+                </div>
+                <p>{{ product.description }}</p>
+                <div class="price-cart">
+                    <div>
+                        <a href="#" class="button button-primary button-with-icon buy-now"
+                            data-product="{{ product.name }}" data-image="{% static product.image %}"
+                            data-price="{{ product.price }}">
+                            <img src="{% static 'website/images/buy.svg' %}" alt="Buy Icon"> Buy It Now
+                        </a>
+                        <a href="#" class="button button-secondary button-with-icon add-to-cart"
+                            data-product="{{ product.name }}" data-price="{{ product.price }}"
+                            data-pk="{{ product.pk }}">
+                            <img src="{% static 'website/images/basket.svg' %}" alt="Basket Icon"> Add to Cart
+                        </a>
+                        <a href="#" class="button button-secondary button-with-icon add-to-wishlist"
+                            data-product="{{ product.name }}" data-price="{{ product.price }}"
+                            data-pk="{{ product.pk }}">
+                            <img src="{% static 'website/images/heart1.svg' %}" alt="Heart Icon"> Add to Wishlist
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Fullscreen Modal for Price Details -->
+    <div id="priceDetailModal" class="modal">
+        <div class="modal-content lightbox-dialog__window lightbox-dialog__window--animate">
+            <button class="lightbox-dialog__handle" type="button" aria-label="Maximize Lightbox Dialog"></button>
+            <div class="lightbox-dialog__header">
+                <h2 class="lightbox-dialog__title">
+                    <div class="ux-overlay__header">
+                        <span class="x-price-transparency--title">
+                            <span class="ux-textspans ux-textspans--BOLD">Price details</span>
+                        </span>
+                    </div>
+                </h2>
+                <button class="icon-btn lightbox-dialog__close" type="button"
+                    aria-label="Close the total savings overlay">
+                    <span class="close">&times;</span>
+                </button>
+            </div>
+            <div class="lightbox-dialog__main">
+                <div class="ux-overlay__content">
+                    <div class="x-price-transparency-overlay">
+                        <div class="x-price-transparency-overlay__items">
+                            <div class="ux-labels-values x-price-transparency-overlay__sale-listing">
+                                <span class="ux-textspans ux-textspans--SECONDARY">Was</span>
+                                <span
+                                    class="ux-textspans ux-textspans--SECONDARY ux-textspans--STRIKETHROUGH">₵147.97</span>
+                            </div>
+                            <div class="ux-labels-values x-price-transparency-overlay__sale-listing">
+                                <span class="ux-textspans ux-textspans--SECONDARY">(11% off) -₵16.28</span>
+                            </div>
+                        </div>
+                        <div class="x-price-transparency-overlay__items">
+                            <div class="ux-labels-values x-price-transparency-overlay__item-shipping">
+                                <span class="ux-textspans">Item price</span>
+                                <span class="ux-textspans">₵131.69</span>
+                            </div>
+                            <div class="ux-labels-values x-price-transparency-overlay__item-shipping">
+                                <span class="ux-textspans">Shipping</span>
+                                <span class="ux-textspans">₵8.98</span>
+                            </div>
+                        </div>
+                        <div class="x-price-transparency-overlay__items">
+                            <div class="ux-labels-values x-price-transparency-overlay__estimated-total">
+                                <span class="ux-textspans ux-textspans--BOLD">Estimated total</span>
+                                <span class="ux-textspans ux-textspans--BOLD">₵102.27</span>
+                            </div>
+                            <div class="ux-labels-values x-price-transparency-overlay__estimated-total">
+                                <span class="ux-textspans ux-textspans--POSITIVE">You save: ₵11.84</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Fullscreen Modal for Image Gallery -->
+    <div id="myModal" class="modal">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="img01">
+    </div>
+
+    <script>
+        document.querySelectorAll('.add-to-wishlist').forEach(button => {
+            button.addEventListener('click', function (event) {
+                event.preventDefault();
+                const productPk = this.getAttribute('data-pk');
+                fetch("{% url 'add_to_wishlist' pk=0 %}".replace('0', productPk), {
+                    method: 'POST',
+                    headers: {
+                        'X-CSRFToken': "{{ csrf_token }}",
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ product_id: productPk })
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        alert(data.message);
+                        updateWishlistCount();
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                    });
+            });
+        });
+
+        function updateWishlistCount() {
+            fetch("{% url 'wishlist_count' %}")
+                .then(response => response.json())
+                .then(data => {
+                    document.querySelector('.wishlist-count').textContent = data.wishlist_count;
+                })
+                .catch(error => console.error('Error fetching wishlist count:', error));
+        }
+
+        updateWishlistCount();
+
+        document.querySelectorAll('.add-to-cart').forEach(button => {
+            button.addEventListener('click', function (event) {
+                event.preventDefault();
+                const productPk = this.getAttribute('data-pk');
+                fetch("{% url 'add_to_cart' pk=0 %}".replace('0', productPk), {
+                    method: 'POST',
+                    headers: {
+                        'X-CSRFToken': "{{ csrf_token }}",
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ product_id: productPk })
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        alert(data.message);
+                        updateCartCount();
+                    })
+                    .catch(error => console.error('Error:', error));
+            });
+        });
+
+        function updateCartCount() {
+            fetch("{% url 'cart_count' %}")
+                .then(response => response.json())
+                .then(data => {
+                    document.querySelector('.cart-count').textContent = data.cart_count;
+                })
+                .catch(error => console.error('Error fetching cart count:', error));
+        }
+
+        updateCartCount();
+
+        const modal = document.getElementById("priceDetailModal");
+        const openModalBtn = document.getElementById("openPriceDetailModal");
+        const closeModalBtn = document.querySelector(".lightbox-dialog__close");
+
+        openModalBtn.addEventListener("click", () => {
+            modal.style.display = "block";
+        });
+
+        closeModalBtn.addEventListener("click", () => {
+            modal.style.display = "none";
+        });
+
+        window.addEventListener("click", (event) => {
+            if (event.target === modal) {
+                modal.style.display = "none";
+            }
+        });
+    </script>
+    <script type="text/javascript" src="{% static 'website/js/productdetail.js' %}"></script>
+</section>
+    {% endblock content%}

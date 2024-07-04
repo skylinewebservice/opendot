@@ -1,82 +1,163 @@
 {% load static %}
-{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Checkout</title>
     <link href="{% static 'website/css/checkout.css' %}" rel="stylesheet" />
-    <link
-    rel="stylesheet"
-    type="text/css"
-    href="{% static 'website/css/bootstrap.css' %}"
-  />
-
-  <!-- fonts style -->
-  <link
-    href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&amp;display=swap"
-    rel="stylesheet"
-  />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
-   integrity="sha512-tb7eLo1W0Vp4oDFftmhazMKg58LYlKPO8X2nQGCUhXv6sbQQy6VVXNdoioMg8hVJF9oIZ0Mp9A2D38Rg3l/Fpw==" 
-   crossorigin="anonymous" 
-   referrerpolicy="no-referrer" />
-
-  <!--owl slider stylesheet -->
-  <link
-    rel="stylesheet"
-    type="text/css"
-    href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"
-  />
-
-  <!-- font awesome style -->
-  <link href="{% static 'website/css/font-awesome.min.css' %}" rel="stylesheet" />
-  <!-- responsive style -->
-  <link href="{% static 'website/css/responsive.css' %}" rel="stylesheet" />
 </head>
 <body>
-    <!-- Navigation Bar -->
-    <nav class="navbar">
-        <div class="logo">E-Shop</div>
-        <div class="nav-links">
-            <a href="{% url 'products' %}" class="back-to-shop">Back to Shop</a>
-            <!-- Keeping the cart count element here for updating purposes -->
-            <div class="cart">
-                <span class="cart-count">0</span>
-                <img src="{% static 'website/images/cart-icon.png' %}" alt="Cart">
-            </div>
-        </div>
-    </nav>
-
     <div class="container">
-        <h1>Order Summary</h1>
-        <div class="order-summary">
-            <div class="cart-container">
-                <div class="cart-items">
-                    <!-- Cart items will be dynamically added here -->
+        <div class="checkoutLayout">
+            <div class="returnCart">
+                <a href="/">keep shopping</a>
+                <h1>List Product in Cart</h1>
+                <div class="list">
+                    {% for product in products %}
+                    <div class="item">
+                        <img src="{% static product.image %}" alt="{{ product.name }}">
+                        <div class="info">
+                            <div class="name">{{ product.name }}</div>
+                            <div class="price">₵{{ product.price }}</div>
+                        </div>
+                        <div class="quantity">{{ product.quantity }}</div>
+                    </div>
+                    {% endfor %}
+                </div>
+                <div class="return">
+                    <div class="row">
+                        <div>Total Price</div>
+                        <div class="totalPrice">₵{{ total_price }}</div>
+                    </div>
                 </div>
             </div>
-            <div class="totals-container">
-                <h2>Order Totals</h2>
-                <div class="total-item">
-                    <span>Items Price:</span>
-                    <span>$<span id="items-price">0.00</span></span>
-                </div>
-                <div class="total-item">
-                    <span>Estimated Tax:</span>
-                    <span>$<span id="estimated-tax">0.00</span></span>
-                </div>
-                <div class="total-item total">
-                    <span>Total:</span>
-                    <span>$<span id="total-price">0.00</span></span>
-                </div>
-                <button class="checkout-button">Proceed to Payment</button>
-                <button class="clear-cart-button">Clear Cart</button>
+
+            <div class="right">
+                <h1>Checkout</h1>
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="form">
+                        <div class="group">
+                            <label for="name">Full Name</label>
+                            <input type="text" name="name" id="name" value="{{ form.name.value }}">
+                        </div>
+                        <div class="group">
+                            <label for="email">Email</label>
+                            <input type="email" name="email" id="email" value="{{ form.email.value }}">
+                        </div>
+                        <div class="group">
+                            <label for="phone_number">Phone Number</label>
+                            <input type="text" name="phone_number" id="phone_number" placeholder="+1234567890" value="{{ form.phone_number.value }}">
+                        </div>
+                        <div class="group">
+                            <label for="address">Address</label>
+                            <input type="text" name="address" id="address" value="{{ form.address.value }}">
+                        </div>
+                    </div>
+                    <div class="payment-method">
+                        {% for radio in form.payment_method %}
+                        <div class="payment-option">
+                            {{ radio.tag }} {{ radio.choice_label }}
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <button type="submit" class="buttonCheckout">Place Order</button>
+                </form>
             </div>
         </div>
     </div>
+    <script>
+        $(document).ready(function() {
+            function updateCartCount() {
+                fetch("{% url 'cart_count' %}")
+                    .then(response => response.json())
+                    .then(data => {
+                        document.querySelector('.cart-count').textContent = data.cart_count;
+                    })
+                    .catch(error => console.error('Error fetching cart count:', error));
+            }
 
-    <script type="text/javascript" src="{% static 'website/js/checkout.js' %}"></script>
+            function calculateTotalPrice() {
+                let totalPrice = 0;
+                $('.quantity-input').each(function() {
+                    const quantity = parseInt($(this).val());
+                    const price = parseFloat($(this).data('price'));
+                    totalPrice += quantity * price;
+                });
+                $('#total-price').text(`$${totalPrice.toFixed(2)}`);
+            }
+
+            $('.remove-from-cart').on('click', function(event) {
+                event.preventDefault();
+                const productPk = $(this).data('pk');
+                
+                $.ajax({
+                    type: 'POST',
+                    url: "{% url 'remove_from_cart' pk=0 %}".replace('0', productPk),
+                    headers: {
+                        'X-CSRFToken': "{{ csrf_token }}",
+                        'Content-Type': 'application/json'
+                    },
+                    success: function(response) {
+                        alert(response.message);
+                        updateCartCount();
+                        $('#cart-item-' + productPk).remove(); // Remove item from cart view
+                        calculateTotalPrice(); // Update total price after removal
+                    },
+                    error: function(error) {
+                        console.error('Error:', error);
+                    }
+                });
+            });
+
+            $('.quantity-input').on('change', function() {
+                calculateTotalPrice();
+            });
+
+            $('.quantity-button').on('click', function() {
+                const action = $(this).data('action');
+                const productPk = $(this).data('pk');
+                const quantityInput = $('#quantity-' + productPk);
+                let quantity = parseInt(quantityInput.val());
+
+                if (action === 'increase' && quantity < 10) {
+                    quantity++;
+                } else if (action === 'decrease' && quantity > 1) {
+                    quantity--;
+                }
+
+                quantityInput.val(quantity);
+                calculateTotalPrice();
+            });
+
+            updateCartCount();
+            calculateTotalPrice();
+        });
+        $(document).ready(function() {
+    $('form').on('submit', function(event) {
+        // Prevent form submission
+        event.preventDefault();
+
+        // Check if all required fields are filled
+        let valid = true;
+        $('form input[required], form select[required]').each(function() {
+            if ($(this).val() === '') {
+                valid = false;
+                $(this).addClass('error'); // Add error class for styling
+            } else {
+                $(this).removeClass('error'); // Remove error class
+            }
+        });
+
+        // If all fields are filled, proceed with form submission
+        if (valid) {
+            this.submit();
+        } else {
+            alert('Please fill all required fields.');
+        }
+    });
+});
+
+    </script>
 </body>
 </html>

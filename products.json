@@ -1,0 +1,257 @@
+[
+    {
+        "pk": 1,
+        "name": "Wind Turbine",
+        "price": 4362.54,
+        "description": "800W 24V wind turbine wind generator windmill with MPPT charge controller",
+        "images": [
+            "website/images/products/01-a.jpg",
+            "website/images/products/01-b.jpg",
+            "website/images/products/01-c.jpg",
+            "website/images/products/01-d.jpg",
+            "website/images/products/01-e.png",
+            "website/images/products/01-f.png",
+            "website/images/products/01-g.png",
+            "website/images/products/01-h.png",
+            "website/images/products/01-i.jpg",
+            "website/images/products/01-j.jpg",
+            "website/images/products/01-k.jpg",
+            "website/images/products/01-l.jpg"
+        ]
+    },
+    {
+        "pk": 2,
+        "name": "Lithium Battery",
+        "price": 4647.37,
+        "description": "LiFePO4 lithium battery 12V 100Ah BMS for solar",
+        "images": [
+            "website/images/products/02-a.jpg",
+            "website/images/products/02-b.jpg",
+            "website/images/products/02-c.jpg",
+            "website/images/products/02-e.jpg",
+            "website/images/products/02-f.jpg",
+            "website/images/products/02-g.jpg",
+            "website/images/products/02-h.jpg",
+            "website/images/products/02-i.jpg",
+            "website/images/products/02-j.jpg"
+        ]
+    },
+    {
+        "pk": 3,
+        "name": "Power Inverter",
+        "price": 1481.74,
+        "description": "3000W Voltage Converter Power Inverter 12V to 230V USB + 2AC",
+        "images": [
+            "website/images/products/03-a.jpg",
+            "website/images/products/03-b.jpg",
+            "website/images/products/03-c.jpg",
+            "website/images/products/03-d.jpg",
+            "website/images/products/03-e.jpg",
+            "website/images/products/03-f.jpg"
+        ]
+    },
+    {
+        "pk": 4,
+        "name": "Power Inverter",
+        "price": 493.74,
+        "description": "1000W Voltage Converter Power Inverter 12V to 230V USB + 1AC",
+        "images": [
+            "website/images/products/04-a.jpg",
+            "website/images/products/04-b.png",
+            "website/images/products/04-c.jpg",
+            "website/images/products/04-d.jpg",
+            "website/images/products/04-e.jpg",
+            "website/images/products/04-f.jpg",
+            "website/images/products/04-g.jpg"
+        ]
+    },
+    {
+        "pk": 5,
+        "name": "Hybrid Solar Charger/Inverter",
+        "price": 4653.74,
+        "description": "PowMr Hybrid Inverter 1600/3000/4500/6200W 12/24V/48V MPPT Solar Charger",
+        "images": [
+            "website/images/products/05-a.jpg",
+            "website/images/products/05-b.jpg",
+            "website/images/products/05-c.jpg",
+            "website/images/products/05-d.jpg",
+            "website/images/products/05-e.jpg",
+            "website/images/products/05-f.jpg",
+            "website/images/products/05-g.jpg",
+            "website/images/products/05-h.jpg"
+        ]
+    },
+    {
+        "pk": 6,
+        "name": "Automatic Transfer Switch",
+        "price": 727.74,
+        "description": "Dual Power Automatic Transfer Switch Circuit Breaker Changeover ZGQ5-100 Amps",
+        "images": [
+            "website/images/products/06-a.jpg",
+            "website/images/products/06-b.jpg",
+            "website/images/products/06-c.jpg",
+            "website/images/products/06-d.jpg",
+            "website/images/products/06-e.jpg",
+            "website/images/products/06-f.jpg",
+            "website/images/products/06-g.jpg",
+            "website/images/products/06-h.jpg",
+            "website/images/products/06-i.jpg",
+            "website/images/products/06-j.jpg",
+            "website/images/products/06-k.jpg"
+        ]
+    },
+    {
+        "pk": 7,
+        "name": "Solar Panel",
+        "price": 1210.56,
+        "description": "100W Solar module monocrystalline for 12V solar system",
+        "images": [
+            "website/images/products/07-a.jpg",
+            "website/images/products/07-b.jpg",
+            "website/images/products/07-c.jpg",
+            "website/images/products/07-d.jpg",
+            "website/images/products/07-e.jpg"
+        ]
+    },
+    {
+        "pk": 8,
+        "name": "Hybrid Solar Charger/Inverter",
+        "price": 1819.74,
+        "description": "PowMr MPPT 60A Solar Hybrid Inverter 12V 24V 36V 48V LCD PV 150Vdc",
+        "images": [
+            "website/images/products/08-a.jpg",
+            "website/images/products/08-b.jpg"
+        ]
+    },
+    {
+        "pk": 9,
+        "name": "Solar Charger",
+        "price": 1012.44,
+        "description": "Powmr PWM 80A 60A Solar Charger Dual USB 100V 12V",
+        "images": [
+            "website/images/products/09-a.jpg",
+            "website/images/products/09-b.jpg",
+            "website/images/products/09-c.png",
+            "website/images/products/09-d.png"
+        ]
+    },
+    {
+        "pk": 10,
+        "name": "Current Leakage Protector Switch",
+        "price": 742.30,
+        "description": "SVP688 230V 63A WIFI Power Energy Voltage Current Meter Leakage Protector Switch",
+        "images": [
+            "website/images/products/10-a.jpg",
+            "website/images/products/10-b.jpg"
+        ]
+    },
+    {
+        "pk": 11,
+        "name": "Solar Combiner Box",
+        "price": 1904.50,
+        "description": "6-String Solar Combiner Box Fuse Circuit Breaker PV Combiner Box 15A",
+        "images": [
+            "website/images/products/11-a.jpg",
+            "website/images/products/11-b.jpg",
+            "website/images/products/11-c.jpg",
+            "website/images/products/11-d.jpg",
+            "website/images/products/11-e.jpg",
+            "website/images/products/11-f.jpg",
+            "website/images/products/11-g.jpg",
+            "website/images/products/11-h.jpg",
+            "website/images/products/11-i.jpg",
+            "website/images/products/11-j.jpg"
+        ]
+    },
+    {
+        "pk": 12,
+        "name": "Hybrid Solar Charger/Inverter",
+        "price": 24934.00,
+        "description": "GoodWe GW10K-ET plus 10kW hybrid inverter including smart meter emergency power WLAN",
+        "images": [
+            "website/images/products/12-a.jpg"
+        ]
+    },
+    {
+        "pk": 13,
+        "name": "Solar Cables",
+        "price": 3344.12,
+        "description": "Solar cable 4mm² 6mm² 5m - 100 m Red Black with 2 or 4 pairs PUSH-IN",
+        "images": [
+            "website/images/products/13-a.jpg",
+            "website/images/products/13-b.jpg",
+            "website/images/products/13-c.jpg"
+        ]
+    },
+    {
+        "pk": 14,
+        "name": "Solar Lithium Battery",
+        "price": 50699.74,
+        "description": "Battery storage Premium LiFePO4 Lithium 12.5 kWh 250Ah HOFMAN-ENERGY",
+        "images": [
+            "website/images/products/14-a.jpg",
+            "website/images/products/14-b.jpg",
+            "website/images/products/14-c.jpg",
+            "website/images/products/14-d.jpg"
+        ]
+    },
+    {
+        "pk": 15,
+        "name": "Hybrid Solar Charger/Inverter",
+        "price": 7565.74,
+        "description": "6200W 48V solar inverter hybrid inverter pure sinus installed mppt 110a",
+        "images": [
+            "website/images/products/15-a.jpg",
+            "website/images/products/15-b.jpg",
+            "website/images/products/15-c.jpg",
+            "website/images/products/15-d.jpg",
+            "website/images/products/15-e.jpg",
+            "website/images/products/15-f.jpg",
+            "website/images/products/15-g.jpg",
+            "website/images/products/15-h.jpg",
+            "website/images/products/15-i.jpg",
+            "website/images/products/15-j.jpg"
+        ]
+    },
+    {
+        "pk": 16,
+        "name": "Coolant Pipe hose",
+        "price": 2454.40,
+        "description": "NEW MERCEDES BENZ C W204 COOLANT PIPE HOSE A2048307496 GENUINE",
+        "images": [
+            "website/images/products/16-a.jpg",
+            "website/images/products/16-b.png",
+            "website/images/products/16-c.jpg",
+            "website/images/products/16-d.jpg",
+            "website/images/products/16-e.jpg",
+            "website/images/products/16-f.jpg",
+            "website/images/products/16-g.jpg"
+        ]
+    },
+    {
+        "pk": 17,
+        "name": "Solar Panel",
+        "price": 1999.16,
+        "description": "JA Solar PV Module Black Frame 410W Photovoltaic Panel JAM54S30 Monocrystalline",
+        "images": [
+            "website/images/products/07-c.jpg",
+            "website/images/products/07-b.jpg",
+            "website/images/products/07-c.jpg",
+            "website/images/products/07-a.jpg",
+            "website/images/products/07-e.jpg"
+        ]
+    },
+    {
+        "pk": 18,
+        "name": "Solar Panel",
+        "price": 1690.00,
+        "description": "Solarmodul 420 Wp FULL-BLACK Suntech N-Type TOPCon monofazial EUR 65,00",
+        "images": [
+            "website/images/products/07-b.jpg",
+            "website/images/products/07-a.jpg",
+            "website/images/products/07-c.jpg",
+            "website/images/products/07-d.jpg",
+            "website/images/products/07-e.jpg"
+        ]
+    }
+]

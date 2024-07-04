@@ -51,8 +51,14 @@
     <!-- Custom styles for this template -->
     <link href="{% static 'website/css/style.css' %}" rel="stylesheet" />
     <link href="{% static 'website/css/style2.css' %}" rel="stylesheet" />
+
     <!-- responsive style -->
     <link href="{% static 'website/css/responsive.css' %}" rel="stylesheet" />
+
+        <!-- Additional CSS -->
+        {% block extra_css %}
+        {% endblock extra_css %}
+        
   </head>
 
   <body>
@@ -120,7 +126,7 @@
                                   <div class="card-body">
                                       <h5 class="card-title">HOSTING</h5>
                                       <p class="card-text">Description of Product 1.</p>
-                                      <a href="{% url 'products' %}" class="btn btn-primary">View Details</a>
+                                      <a href="{% url 'product_list' %}" class="btn btn-primary">View Details</a>
                                   </div>
                               </div>
                           </div>
@@ -129,7 +135,7 @@
                                   <div class="card-body">
                                       <h5 class="card-title">STARLINK</h5>
                                       <p class="card-text">Description of Product 2.</p>
-                                      <a href="#" class="btn btn-primary">View Details</a>
+                                      <a href="{% url 'product_list' %}" class="btn btn-primary">View Details</a>
                                   </div>
                               </div>
                           </div>
@@ -138,7 +144,7 @@
                                   <div class="card-body">
                                       <h5 class="card-title">SOLAR</h5>
                                       <p class="card-text">Description of Product 3.</p>
-                                      <a href="#" class="btn btn-primary">View Details</a>
+                                      <a href="{% url 'product_list' %}" class="btn btn-primary">View Details</a>
                                   </div>
                               </div>
                           </div>

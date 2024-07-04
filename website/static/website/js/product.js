@@ -73,3 +73,43 @@ document.addEventListener('DOMContentLoaded', function() {
 
     updateCartCount();
 });
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    const carousels = document.querySelectorAll('.carousel');
+    const interval = 3000; // Time in milliseconds for each slide
+
+    carousels.forEach(carousel => {
+        let currentIndex = 0;
+        const images = carousel.querySelectorAll('img');
+        const totalImages = images.length;
+
+        function showImage(index) {
+            images.forEach((img, i) => {
+                img.classList.toggle('active', i === index);
+            });
+        }
+
+        function nextImage() {
+            currentIndex = (currentIndex + 1) % totalImages;
+            showImage(currentIndex);
+        }
+
+        // Show the first image initially
+        showImage(currentIndex);
+
+        // Set the interval for automatic slide
+        setInterval(nextImage, interval);
+
+        // Event listeners for prev and next buttons
+        const prevButton = carousel.querySelector('.prev');
+        const nextButton = carousel.querySelector('.next');
+
+        prevButton.addEventListener('click', function() {
+            currentIndex = (currentIndex - 1 + totalImages) % totalImages;
+            showImage(currentIndex);
+        });
+
+        nextButton.addEventListener('click', nextImage);
+    });
+});

@@ -4,74 +4,328 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>E-commerce Card with Carousel</title>
-    <link href="{% static 'website/css/products.css' %}" rel="stylesheet" />
+    <title>OpenDot Shop</title>
+    <link href="{% static 'website/css/productdetail.css' %}" rel="stylesheet" />
 </head>
-<body>
+<body> 
     <!-- Navigation Bar -->
     <nav class="navbar">
-        <div class="logo">E-Shop</div>
+        <div class="logo">OpenDot Shop</div>
         <div class="cart">
             <span class="cart-count">0</span>
-            <a href="{% url 'checkout' %}"><img src="{% static 'website/images/cart-icon.png' %}" alt="Cart"></a>
+            <a href="{% url 'products' %}"><img src="{% static 'website/images/cart-icon.svg' %}" alt="Cart"></a>
         </div>
     </nav>
 
-    <div class="container">
-        <!-- Card 1 -->
-        <div class="card">
-            <div class="carousel">
-                <img src="{% static 'website/images/solar.jpg' %}" alt="Product 1 Image 1" class="active">
-                <img src="{% static 'website/images/solar.jpg' %}" alt="Product 1 Image 2">
-                <img src="{% static 'website/images/solar.jpg' %}" alt="Product 1 Image 3">
-                <button class="prev">&#10094;</button>
-                <button class="next">&#10095;</button>
-            </div>
-            <div class="info">
-                <h2>Product 1</h2>
-                <p>Product 1 description goes here. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                <!-- Add data attributes for product name and image -->
-                <button class="add-to-cart" data-product="Product 1" data-image="{% static 'website/images/solar.jpg' %}" data-price="100">Add to Cart</button>
-                <button class="add-to-wishlist">&#9829;</button>
-            </div>
+    <div class="main-container">
+        <!-- Categories Section -->
+        <div class="categories">
+            <h2>Categories</h2>
+            <ul>
+                <li><a href="#" data-category="all">All</a></li>
+                <li><a href="#" data-category="category1">SOLAR</a></li>
+                <li><a href="#" data-category="category2">STARLINK</a></li>
+                <li><a href="#" data-category="category3">HOSTING</a></li>
+                
+            </ul>
         </div>
 
-        <!-- Card 2 -->
-        <div class="card">
-            <div class="carousel">
-                <img src="{% static 'website/images/solar.jpg' %}" alt="Product 1 Image 1" class="active">
-                <img src="{% static 'website/images/solar.jpg' %}" alt="Product 1 Image 2">
-                <img src="{% static 'website/images/solar.jpg' %}" alt="Product 1 Image 3">
-                <button class="prev">&#10094;</button>
-                <button class="next">&#10095;</button>
-            </div>
-            <div class="info">
-                <h2>Product 2</h2>
-                <p>Product 1 description goes here. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                <!-- Add data attributes for product name and image -->
-                <button class="add-to-cart" data-product="Product 1" data-image="{% static 'website/images/solar.jpg' %}" data-price="20">Add to Cart</button>
-                <button class="add-to-wishlist">&#9829;</button>
-            </div>
-        </div>
+        <!-- Products Section -->
+        <div class="container">
+            <!-- Category 1 Products -->
+            <div class="product-set" data-category="category1">
+                <!-- Card 1 -->
+                <div class="card">
+                    <div class="carousel">
+                        <img src="{% static 'website/images/solar.jpg' %}" alt="Product 1 Image 1" class="active">
+                        <img src="{% static 'website/images/starlink.png' %}" alt="Product 1 Image 2">
+                        <img src="{% static 'website/images/solar.jpg' %}" alt="Product 1 Image 3">
+                        <button class="prev">&#10094;</button>
+                        <button class="next">&#10095;</button>
+                    </div>
+                    <div class="info">
+                        <h2>Product 1</h2>
+                        <p>$100</p>
+                        <button class="add-to-cart" data-product="Product 1" data-image="{% static 'website/images/solar.jpg' %}" data-price="100">Add to Cart</button>
+                        <button class="add-to-wishlist">&#9829;</button>
+                    </div>
+                </div>
 
-        <!-- Card 3 -->
-        <div class="card">
-            <div class="carousel">
-                <img src="{% static 'website/images/solar.jpg' %}" alt="Product 1 Image 1" class="active">
-                <img src="{% static 'website/images/solar.jpg' %}" alt="Product 1 Image 2">
-                <img src="{% static 'website/images/solar.jpg' %}" alt="Product 1 Image 3">
-                <button class="prev">&#10094;</button>
-                <button class="next">&#10095;</button>
-            </div>
-            <div class="info">
-                <h2>Product 3</h2>
-                <p>Product 1 description goes here. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                <!-- Add data attributes for product name and image -->
-                <button class="add-to-cart" data-product="Product 1" data-image="{% static 'website/images/solar.jpg' %}" data-price="105">Add to Cart</button>
-                <button class="add-to-wishlist">&#9829;</button>
-            </div>
-        </div>
+                <!-- Card 2 -->
+                <div class="card">
+                    <div class="carousel">
+                        <img src="{% static 'website/images/solar.jpg' %}" alt="Product 2 Image 1" class="active">
+                        <img src="{% static 'website/images/solar.jpg' %}" alt="Product 2 Image 2">
+                        <img src="{% static 'website/images/solar.jpg' %}" alt="Product 2 Image 3">
+                        <button class="prev">&#10094;</button>
+                        <button class="next">&#10095;</button>
+                    </div>
+                    <div class="info">
+                        <h2>Product 2</h2>
+                        <p>$20</p>
+                        <button class="add-to-cart" data-product="Product 2" data-image="{% static 'website/images/solar.jpg' %}" data-price="20">Add to Cart</button>
+                        <button class="add-to-wishlist">&#9829;</button>
+                    </div>
+                </div>
 
-   <script type="text/javascript" src="{% static 'website/js/product.js' %}"></script>
+                <!-- Card 3 -->
+                <div class="card">
+                    <div class="carousel">
+                        <img src="{% static 'website/images/solar.jpg' %}" alt="Product 3 Image 1" class="active">
+                        <img src="{% static 'website/images/solar.jpg' %}" alt="Product 3 Image 2">
+                        <img src="{% static 'website/images/solar.jpg' %}" alt="Product 3 Image 3">
+                        <button class="prev">&#10094;</button>
+                        <button class="next">&#10095;</button>
+                    </div>
+                    <div class="info">
+                        <h2>Product 3</h2>
+                        <p>$105</p>
+                        
+                        <button class="add-to-cart" data-product="Product 3" data-image="{% static 'website/images/solar.jpg' %}" data-price="105">Add to Cart</button>
+                        <button class="add-to-wishlist">&#9829;</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Category 2 Products -->
+            <div class="product-set" data-category="category2">
+                <!-- Card 1 -->
+                <div class="card">
+                    <div class="carousel-container">
+                        <div class="carousel">
+                            <img src="{% static 'website/images/solar.jpg' %}" alt="Product 1 Image 1" class="active">
+                            <img src="{% static 'website/images/starlink.png' %}" alt="Product 1 Image 2">
+                            <img src="{% static 'website/images/solar.jpg' %}" alt="Product 1 Image 3">
+                            <button class="prev">&#10094;</button>
+                            <button class="next">&#10095;</button>
+                        </div>
+                        <div class="preview">
+                            <img src="{% static 'website/images/solar.jpg' %}" alt="Product 1 Image 1" class="active" data-index="0">
+                            <img src="{% static 'website/images/starlink.png' %}" alt="Product 1 Image 2" data-index="1">
+                            <img src="{% static 'website/images/solar.jpg' %}" alt="Product 1 Image 3" data-index="2">
+                        </div>
+                    </div>
+                    <div class="info">
+                        <h2>Product 1</h2>
+                        <div class="price">
+                            <p>$100</p>
+                            <a href="#" id="openPriceDetailModal"><img src="{% static 'website/images/details1.svg' %}" alt="">Price Details</a>
+                        </div>
+                        <p>A brief description of Product 1.</p>
+                        <div class="price-cart">
+                            <div>
+                                <a href="#" class="button button-primary button-with-icon" data-product="Product 1" data-image="{% static 'website/images/solar.jpg' %}" data-price="100">
+                                    <img src="{% static 'website/images/buy.svg' %}" alt="Buy Icon"> Buy It Now
+                                </a>
+                                <a href="#" class="button button-secondary button-with-icon" data-product="Product 1" data-image="{% static 'website/images/solar.jpg' %}" data-price="100">
+                                    <img src="{% static 'website/images/basket.svg' %}" alt="Basket Icon"> Add to cart
+                                </a>
+                                <a href="#" class="button button-secondary button-with-icon" data-product="Product 1" data-image="{% static 'website/images/solar.jpg' %}" data-price="100" id="openModal">
+                                    <img src="{% static 'website/images/heart1.svg' %}" alt="Heart Icon"> Add to watchlist
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    
+                <!-- Card 2 -->
+                <div class="card">
+                    <div class="carousel-container">
+                        <div class="carousel">
+                            <img src="{% static 'website/images/solar.jpg' %}" alt="Product 2 Image 1" class="active">
+                            <img src="{% static 'website/images/starlink.png' %}" alt="Product 2 Image 2">
+                            <img src="{% static 'website/images/solar.jpg' %}" alt="Product 2 Image 3">
+                            <button class="prev">&#10094;</button>
+                            <button class="next">&#10095;</button>
+                        </div>
+                        <div class="preview">
+                            <img src="{% static 'website/images/solar.jpg' %}" alt="Product 2 Image 1" class="active" data-index="0">
+                            <img src="{% static 'website/images/starlink.png' %}" alt="Product 2 Image 2" data-index="1">
+                            <img src="{% static 'website/images/solar.jpg' %}" alt="Product 2 Image 3" data-index="2">
+                        </div>
+                    </div>
+                    <div class="info">
+                        <h2>Product 2</h2>
+                        <div class="price">
+                            <p>$20</p>
+                            <a href="#" id="openPriceDetailModal"><img src="{% static 'website/images/details1.svg' %}" alt="">Price Details</a>
+                        </div>
+                        <p>A brief description of Product 2.</p>
+                        <div class="price-cart">
+                            <div>
+                                <a href="#" class="button button-primary button-with-icon" data-product="Product 2" data-image="{% static 'website/images/solar.jpg' %}" data-price="20">
+                                    <img src="{% static 'website/images/buy.svg' %}" alt="Buy Icon"> Buy It Now
+                                </a>
+                                <a href="#" class="button button-secondary button-with-icon" data-product="Product 2" data-image="{% static 'website/images/solar.jpg' %}" data-price="20">
+                                    <img src="{% static 'website/images/basket.svg' %}" alt="Basket Icon"> Add to cart
+                                </a>
+                                <a href="#" class="button button-secondary button-with-icon" data-product="Product 2" data-image="{% static 'website/images/solar.jpg' %}" data-price="20" id="openModal">
+                                    <img src="{% static 'website/images/heart1.svg' %}" alt="Heart Icon"> Add to watchlist
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    
+                <!-- Card 3 -->
+                <div class="card">
+                    <div class="carousel-container">
+                        <div class="carousel">
+                            <img src="{% static 'website/images/solar.jpg' %}" alt="Product 3 Image 1" class="active">
+                            <img src="{% static 'website/images/starlink.png' %}" alt="Product 3 Image 2">
+                            <img src="{% static 'website/images/solar.jpg' %}" alt="Product 3 Image 3">
+                            <button class="prev">&#10094;</button>
+                            <button class="next">&#10095;</button>
+                        </div>
+                        <div class="preview">
+                            <img src="{% static 'website/images/solar.jpg' %}" alt="Product 3 Image 1" class="active" data-index="0">
+                            <img src="{% static 'website/images/starlink.png' %}" alt="Product 3 Image 2" data-index="1">
+                            <img src="{% static 'website/images/solar.jpg' %}" alt="Product 3 Image 3" data-index="2">
+                        </div>
+                    </div>
+                    <div class="info">
+                        <h2>Product 3</h2>
+                        <div class="price">
+                            <p>$105</p>
+                            <a href="#" id="openPriceDetailModal"><img src="{% static 'website/images/details1.svg' %}" alt="">Price Details</a>
+                        </div>
+                        <p>A brief description of Product 3.</p>
+                        <div class="price-cart">
+                            <div>
+                                <a href="#" class="button button-primary button-with-icon" data-product="Product 3" data-image="{% static 'website/images/solar.jpg' %}" data-price="105">
+                                    <img src="{% static 'website/images/buy.svg' %}" alt="Buy Icon"> Buy It Now
+                                </a>
+                                <a href="#" class="button button-secondary button-with-icon" data-product="Product 3" data-image="{% static 'website/images/solar.jpg' %}" data-price="105">
+                                    <img src="{% static 'website/images/basket.svg' %}" alt="Basket Icon"> Add to cart
+                                </a>
+                                <a href="#" class="button button-secondary button-with-icon" data-product="Product 3" data-image="{% static 'website/images/solar.jpg' %}" data-price="105" id="openModal">
+                                    <img src="{% static 'website/images/heart1.svg' %}" alt="Heart Icon"> Add to watchlist
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            <!-- Category 3 Products -->
+            <div class="product-set" data-category="category3">
+                <!-- Card 1 -->
+                <div class="card">
+                    <div class="carousel">
+                        <img src="{% static 'website/images/solar.jpg' %}" alt="Product 7 Image 1" class="active">
+                        <img src="{% static 'website/images/solar.jpg' %}" alt="Product 7 Image 2">
+                        <img src="{% static 'website/images/solar.jpg' %}" alt="Product 7 Image 3">
+                        <button class="prev">&#10094;</button>
+                        <button class="next">&#10095;</button>
+                    </div>
+                    <div class="info">
+                        <h2>Product 7</h2>
+                        <p>$40</p>
+                        <button class="add-to-cart" data-product="Product 7" data-image="{% static 'website/images/solar.jpg' %}" data-price="40">Add to Cart</button>
+                        <button class="add-to-wishlist">&#9829;</button>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="card">
+                    <div class="carousel">
+                        <img src="{% static 'website/images/solar.jpg' %}" alt="Product 8 Image 1" class="active">
+                        <img src="{% static 'website/images/solar.jpg' %}" alt="Product 8 Image 2">
+                        <img src="{% static 'website/images/solar.jpg' %}" alt="Product 8 Image 3">
+                        <button class="prev">&#10094;</button>
+                        <button class="next">&#10095;</button>
+                    </div>
+                    <div class="info">
+                        <h2>Product 8</h2>
+                        <p>$25</p>
+                        <button class="add-to-cart" data-product="Product 8" data-image="{% static 'website/images/solar.jpg' %}" data-price="25">Add to Cart</button>
+                        <button class="add-to-wishlist">&#9829;</button>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="card">
+                    <div class="carousel">
+                        <img src="{% static 'website/images/solar.jpg' %}" alt="Product 9 Image 1" class="active">
+                        <img src="{% static 'website/images/solar.jpg' %}" alt="Product 9 Image 2">
+                        <img src="{% static 'website/images/solar.jpg' %}" alt="Product 9 Image 3">
+                        <button class="prev">&#10094;</button>
+                        <button class="next">&#10095;</button>
+                    </div>
+                    <div class="info">
+                        <h2>Product 9</h2>
+                        <p>$35</p>
+                        <button class="add-to-cart" data-product="Product 9" data-image="{% static 'website/images/solar.jpg' %}" data-price="35">Add to Cart</button>
+                        <button class="add-to-wishlist">&#9829;</button>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const carousels = document.querySelectorAll('.carousel');
+            const interval = 3000; // Time in milliseconds for each slide
+
+            carousels.forEach(carousel => {
+                let currentIndex = 0;
+                const images = carousel.querySelectorAll('img');
+                const totalImages = images.length;
+
+                function showImage(index) {
+                    images.forEach((img, i) => {
+                        img.classList.toggle('active', i === index);
+                    });
+                }
+
+                function nextImage() {
+                    currentIndex = (currentIndex + 1) % totalImages;
+                    showImage(currentIndex);
+                }
+
+                // Show the first image initially
+                showImage(currentIndex);
+
+                // Set the interval for automatic slide
+                setInterval(nextImage, interval);
+
+                // Event listeners for prev and next buttons
+                const prevButton = carousel.querySelector('.prev');
+                const nextButton = carousel.querySelector('.next');
+
+                prevButton.addEventListener('click', function() {
+                    currentIndex = (currentIndex - 1 + totalImages) % totalImages;
+                    showImage(currentIndex);
+                });
+
+                nextButton.addEventListener('click', nextImage);
+            });
+
+            // Category filter
+            const categoryLinks = document.querySelectorAll('.categories a');
+            const productSets = document.querySelectorAll('.product-set');
+
+            categoryLinks.forEach(link => {
+                link.addEventListener('click', function(event) {
+                    event.preventDefault();
+                    const category = this.getAttribute('data-category');
+
+                    productSets.forEach(set => {
+                        if (category === 'all' || set.getAttribute('data-category') === category) {
+                            set.style.display = 'block';
+                        } else {
+                            set.style.display = 'none';
+                        }
+                    });
+                });
+            });
+
+            // Show all products initially
+            productSets.forEach(set => set.style.display = 'block');
+        });
+    </script>
+    <script type="text/javascript" src="{% static 'website/js/product.js' %}"></script>
 </body>
 </html>
