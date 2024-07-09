@@ -5,7 +5,6 @@
 {% block extra_css %}
 <link href="{% static 'website/css/invoice.css' %}" rel="stylesheet" />
 <link href="{% static 'website/css/print.css' %}" rel="stylesheet" media="print" />
-
 {% endblock %}
 
 {% block content %}
@@ -49,6 +48,27 @@
 
         <div class="total-price">
             <h3>Total Price: ₵{{ total_price|intcomma }}</h3>
+        </div>
+
+        <div class="payment-options">
+            <h2>Payment Options</h2>
+            <p><strong>Bank Transfer Option:</strong></p>
+            <p>Account Name: Ibrahim Chibsah Sawadogo</p>
+            <p>Bank Name: Ecobank Ghana</p>
+            <p>Account Number: 1441002627823</p>
+            <p>Swift Code: ECOCGHAC</p>
+            <p>Bank Address: 2 Morocco Lane, Off Independence Ave</p>
+            
+            <p><strong>Momo Option:</strong></p>
+            <p>0537882387 (OpenDot Solutions LTD)</p>
+            
+            <p><strong>Payment on Pickup Option:</strong></p>
+            <p>Opposite Kiddie Skills Montessori, Sakumono, Ghana</p>
+        </div>
+
+        <div class="disclaimer">
+            <p><strong>Disclaimer:</strong></p>
+            <p>Invoices remain valid until 00:00 .</p>
         </div>
 
         <div class="print-button-container">

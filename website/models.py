@@ -46,7 +46,7 @@ class Order(models.Model):
     PAYMENT_CHOICES = [
         ('pay_to_bank', 'Pay to Bank'),
         ('mobile_money', 'Mobile Money'),
-        ('direct_payment', 'Direct Payment'),
+        ('cash', 'Cash'),
     ]
 
     order_id = models.AutoField(primary_key=True)

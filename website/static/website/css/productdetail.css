@@ -456,7 +456,7 @@ a {
 }
 
 /* Add media query for mobile responsiveness */
-@media (max-width: 768px) {
+@media screen and (max-width: 768px) {
     .main-container {
         flex-direction: column;
     }
@@ -477,23 +477,41 @@ a {
         width: 100%;
         margin-right: 0;
     }
+    .shop-card {
+        flex-direction: column;
+        width: 100%; /* Full width on small screens */
+        padding: 10px;
+    }
 
     .info {
         padding: 0;
     }
 
     .button {
-        width: 100%;
+        width: 150%;
         margin-bottom: 10px;
     }
-    .preview {
-        display: flex;
-        justify-content: center;
-        margin-top: 10px;
-        width: 50%;
+
+    .info {
+        padding: 10px;
+    }
+
+
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 9999;
+        padding-top: 12%;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.89);
     }
     .modal-content {
-        width: 40%;
-        max-width: 100px;
+        width: 90%;
+        max-width: 700px;
     }
 }
+
