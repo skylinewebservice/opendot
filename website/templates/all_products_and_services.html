@@ -2,9 +2,8 @@
 {% load static %}
 {% load humanize %}
 
-
 {% block extra_css %}
-<link href="{% static 'website/css/wishlist.css' %}" rel="stylesheet" />
+<link href="{% static 'website/css/productlist.css' %}" rel="stylesheet" />
 <style>
     .categories-drawer {
         position: fixed;
@@ -35,7 +34,7 @@
         justify-content: center;
         align-items: center;
         cursor: pointer;
-        border-radius: 5px 0 0 5px;
+        border-radius: 0 10px 10px 0;
     }
 
     .categories h2 {
@@ -61,29 +60,24 @@
 </style>
 {% endblock %}
 
-   
-{% block content%}
+{% block content %}
+<!-- Navigation Bar -->
 <section style="background-color: white;">
-    <!-- Navigation Bar -->
     <nav class="navbar">
-<div class="logo"><a href="{% url 'all_products_and_services' %}">OpenDot Shop</a></div>
+        <div class="logo"><a href="{% url 'all_products_and_services' %}">OpenDot Shop</a></div>
         <div class="cart">
             <span class="cart-count">0</span>
             <a href="{% url 'cart' %}"><img src="{% static 'website/images/cart-icon.svg' %}" alt="Cart"></a>
         </div>
         <div class="wishlist">
             <span class="wishlist-count">0</span>
-            <a href="{% url 'wishlist' %}">
-                <img src="{% static 'website/images/heart1.svg' %}" alt="Wishlist">
-            </a>
+            <a href="{% url 'wishlist' %}"><img src="{% static 'website/images/heart1.svg' %}" alt="Wishlist"></a>
         </div>
     </nav>
 
-    <h1>Wishlist</h1>
-
-    {% if products %}
-        <div class="product-container">
-              <!-- Categories Drawer -->
+    <h1>All Products and Services</h1>
+    <div class="shop-product-container">
+        <!-- Categories Drawer -->
         <div class="categories-drawer" id="categoriesDrawer">
             <div class="categories-sign" id="categoriesSign">☰</div>
             <div class="categories">
@@ -97,33 +91,25 @@
             </div>
         </div>
 
-            {% for product in products %}
-                <div class="shop-card" data-pk="{{ product.pk }}">
-                    <img src="{% static product.image %}" alt="{{ product.name }}">
-                    <div class="shop-card-content">
-                        <p>{{ product.name }}</p>
-                        <p>₵{{ product.price|intcomma }}</p>
-                        <a href="{% url 'product_detail' product.pk %}" style="text-decoration: underline;">Product details</a>
-                        
-                        <div class="button-container">
-                            <a href="#" class="button-circle add-to-cart" data-product="{{ product.name }}" data-price="{{ product.price }}" data-pk="{{ product.pk }}">
-                                <img src="{% static 'website/images/basket.svg' %}" alt="Basket Icon">
-                            </a>  
-                        </div>
-                        <div class="button-container">
-                            <a href="#" class="button-circle remove-from-wishlist" data-pk="{{ product.pk }}">
-                                <img src="{% static 'website/images/trash.svg' %}" alt="Remove Icon">
-                            </a>
-                        </div>
+        {% for item in items %}
+            <div class="shop-card">
+                <img src="{% static item.images.0 %}" alt="{{ item.name }}">
+                <div class="shop-card-content">
+                    <p>{{ item.name }}</p>
+                    <a href="{% url 'product_detail' item.pk %}" style="text-decoration: underline;">Product details</a>
+                    <p>₵{{ item.price|intcomma }}</p>
+                    <div class="button-container">
+                        <a href="#" class="button-circle add-to-cart" data-product="{{ item.name }}" data-price="{{ item.price }}" data-pk="{{ item.pk }}">
+                            <img src="{% static 'website/images/basket.svg' %}" alt="Basket Icon">
+                        </a>
+                        <a href="#" class="button-circle add-to-wishlist" data-product="{{ item.name }}" data-price="{{ item.price }}" data-pk="{{ item.pk }}">
+                            <img src="{% static 'website/images/heart1.svg' %}" alt="Heart Icon">
+                        </a>
                     </div>
                 </div>
-            {% endfor %}
-        </div>
-    {% else %}
-        <div class="empty-wishlist-message">
-            <p>Your wishlist is empty. <br> <a href="{% url 'all_products_and_services' %}">Back to store</a></p>
-        </div>
-    {% endif %}
+            </div>
+        {% endfor %}
+    </div>
 
     <script>
         // Toggle categories drawer
@@ -133,11 +119,13 @@
         categoriesSign.addEventListener('click', function() {
             categoriesDrawer.classList.toggle('open');
         });
-        document.querySelectorAll('.remove-from-wishlist').forEach(button => {
+
+        // Add to wishlist functionality
+        document.querySelectorAll('.add-to-wishlist').forEach(button => {
             button.addEventListener('click', function(event) {
                 event.preventDefault();
                 const productPk = this.getAttribute('data-pk');
-                fetch("{% url 'remove_from_wishlist' pk=0 %}".replace('0', productPk), {
+                fetch("{% url 'add_to_wishlist' pk=0 %}".replace('0', productPk), {
                     method: 'POST',
                     headers: {
                         'X-CSRFToken': "{{ csrf_token }}",
@@ -149,13 +137,6 @@
                 .then(data => {
                     alert(data.message);
                     updateWishlistCount();
-                    document.querySelector(`.card[data-pk="${productPk}"]`).remove();
-                    if (document.querySelectorAll('.card').length === 0) {
-                        document.querySelector('.product-container').innerHTML = `
-                            <div class="empty-wishlist-message">
-                                <p>Your wishlist is empty. <br> <a href="{% url 'all_products_and_services' %}">Back to store</a></p>
-                            </div>`;
-                    }
                 })
                 .catch(error => {
                     console.error('Error:', error);
@@ -174,6 +155,7 @@
 
         updateWishlistCount();
 
+        // Add to cart functionality
         document.querySelectorAll('.add-to-cart').forEach(button => {
             button.addEventListener('click', function(event) {
                 event.preventDefault();
@@ -206,5 +188,5 @@
 
         updateCartCount();
     </script>
-    </section>
-    {% endblock content%}
+</section>
+{% endblock content %}

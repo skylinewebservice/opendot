@@ -1,0 +1,16 @@
+.initial-text,
+.additional-text {
+    line-height: 1.5; /* Adjust the line height to your preference */
+    margin: 0; /* Remove default margin */
+}
+
+.read-more-link {
+    display: inline-block;
+    margin-top: 10px; /* Adjust space between text and read more link */
+    color: #007bff; /* Optional: Adjust link color */
+    text-decoration: none; /* Optional: Remove underline */
+}
+
+.read-more-link:hover {
+    text-decoration: underline; /* Optional: Add underline on hover */
+}

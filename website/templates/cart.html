@@ -4,13 +4,19 @@
 
 {% block extra_css %}
 <link href="{% static 'website/css/cart.css' %}" rel="stylesheet" />
+<style>
+.empty-cart-message {
+    text-align: center;
+    margin-top: 200px; /* Adjust as needed */
+}
+</style>
 {% endblock %}
 
 {% block content %}
 <section style="background-color: white;">
     <!-- Navigation Bar -->
     <nav class="checkout-navbar">
-        <div class="checkout-logo"><a href="{% url 'product_list' %}">OpenDot Shop</a></div>
+        <div class="checkout-logo"><a href="{% url 'all_products_and_services' %}">OpenDot Shop</a></div>
         <div class="checkout-cart">
             <span class="checkout-cart-count">0</span>
             <a href="{% url 'cart' %}"><img src="{% static 'website/images/cart-icon.svg' %}" alt="Cart"></a>
@@ -39,6 +45,10 @@
                                 </button>
                             </div>
                         </div>
+                    </div>
+                {% empty %}
+                    <div class="empty-cart-message">
+                        <p>Your cart is empty. <br> <a href="{% url 'all_products_and_services' %}">Back to store</a></p>
                     </div>
                 {% endfor %}
             </div>
@@ -108,6 +118,16 @@
             $('#checkout-total-price').text('₵' + totalPrice.toFixed(2));
         }
 
+        function checkIfCartIsEmpty() {
+            if ($('.checkout-cart-item').length === 0) {
+                if (!$('.empty-cart-message').length) {
+                    $('.checkout-cart-container').append('<div class="empty-cart-message"><p>Your cart is empty. <br> <a href="{% url 'all_products_and_services' %}">Back to store</a></p></div>');
+                }
+            } else {
+                $('.empty-cart-message').remove();
+            }
+        }
+
         $('.checkout-remove-from-cart').on('click', function(event) {
             event.preventDefault();
             const productPk = $(this).data('pk');
@@ -124,6 +144,7 @@
                     updateCartCount();
                     $('#checkout-cart-item-' + productPk).remove(); // Remove item from cart view
                     calculateTotalPrice(); // Update total price after removal
+                    checkIfCartIsEmpty(); // Check if cart is empty and show message if true
                 },
                 error: function(error) {
                     console.error('Error:', error);
@@ -166,6 +187,7 @@
                     alert(response.message);
                     updateCartCount();  // Update cart count after clearing cart
                     $('.checkout-cart-container').empty();  // Remove items from cart view
+                    checkIfCartIsEmpty(); // Show empty cart message
                     calculateTotalPrice();  // Update total price after clearing cart
                 },
                 error: function(error) {
@@ -196,13 +218,12 @@
                 type: 'POST',
                 url: $(this).attr('action'),
                 data: $.param(formData),
+                headers: {
+                    'X-CSRFToken': "{{ csrf_token }}"
+                },
                 success: function(response) {
-                    if (response.order_id) {
-                        window.location.href = '{% url "invoice" 0 %}'.replace('0', response.order_id);
-                    } else {
-                        console.error('Order ID not found in response:', response);
-                        // Handle error or fallback behavior
-                    }
+                    alert('Order placed successfully!');
+                    window.location.href = "{% url 'invoice' 0 %}".replace('0', response.order_id);
                 },
                 error: function(error) {
                     console.error('Error:', error);
@@ -214,7 +235,7 @@
         // Initial updates on page load
         updateCartCount();
         calculateTotalPrice();
+        checkIfCartIsEmpty();
     });
 </script>
-
 {% endblock content %}

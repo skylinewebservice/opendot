@@ -1,0 +1,29 @@
+[
+    {
+        "pk": 21,
+        "name": "Hosting",
+        "price": 254.00,
+        "description": "",
+        "images": [
+            "website/images/hosting.jpg"
+        ]
+    },
+    {
+        "pk": 22,
+        "name": "Standard Hosting",
+        "price": 699.06,
+        "description": "",
+        "images": [
+            "website/images/hosting.png"
+        ]
+    },
+    {
+        "pk": 23,
+        "name": "Premium Hosting",
+        "price": 1180.00,
+        "description":"",
+        "images": [
+            "website/images/hosting1.png"
+        ]
+    }
+]

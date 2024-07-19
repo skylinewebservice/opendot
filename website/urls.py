@@ -20,5 +20,8 @@ urlpatterns = [
     path('contact/', views.contact, name='contact'),
     path('create-order/', views.create_order, name='create_order'),
     path('invoice/<int:order_id>/', views.invoice, name='invoice'),
+    path('hosting-services/', views.hosting_services, name='hosting_services'),
+    path('starlink_items/', views.starlink_items, name='starlink_items'),
+    path('all-products-and-services/', views.all_products_and_services, name='all_products_and_services'),
     
 ]

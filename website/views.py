@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse
-from .models import Cart, CartItem, Wishlist, Product, Order
+from .models import Cart, CartItem, Wishlist, Product, Order,HostingService
 from .forms import OrderForm
 import json
 from django.conf import settings
@@ -30,6 +30,15 @@ def service(request):
 def why(request):
     return render(request, 'why.html')
 
+def all_products_and_services(request):
+    with open(settings.BASE_DIR / 'products.json', 'r') as f:
+        products = json.load(f)
+    with open(settings.BASE_DIR / 'hosting.json', 'r') as f:
+        services = json.load(f)
+
+    combined_items = products + services
+
+    return render(request, 'all_products_and_services.html', {'items': combined_items})
 
 def product_list(request):
     with open(settings.BASE_DIR / 'products.json', 'r') as f:
@@ -50,13 +59,19 @@ def product_detail(request, pk):
 
 
 
+
 @csrf_exempt
 def add_to_cart(request, pk):
     if request.method == 'POST':
         with open(settings.BASE_DIR / 'products.json', 'r') as f:
             products = json.load(f)
-
-        product_data = next((product for product in products if product['pk'] == pk), None)
+        with open(settings.BASE_DIR / 'hosting.json', 'r') as f:
+            hosting_services = json.load(f)
+        
+        # Combine the products and hosting services into one list
+        combined_products = products + hosting_services
+        
+        product_data = next((product for product in combined_products if product['pk'] == pk), None)
         if not product_data:
             return JsonResponse({'message': 'Product not found.'}, status=404)
 
@@ -77,10 +92,14 @@ def cart(request):
     product_ids = request.session.get('cart', [])
     with open(settings.BASE_DIR / 'products.json', 'r') as f:
         products = json.load(f)
+    with open(settings.BASE_DIR / 'hosting.json', 'r') as f:
+        hosting_services = json.load(f)
+
+    combined_products = products + hosting_services
 
     cart_products = [
         {**product, 'image': product['images'][0]}
-        for product in products
+        for product in combined_products
         if product['pk'] in product_ids
     ]
 
@@ -116,8 +135,12 @@ def remove_from_cart(request, pk):
         
         with open(settings.BASE_DIR / 'products.json', 'r') as f:
             products = json.load(f)
+        with open(settings.BASE_DIR / 'hosting.json', 'r') as f:
+            hosting_services = json.load(f)
+        
+        combined_products = products + hosting_services
 
-        product_data = next((product for product in products if product['pk'] == pk), None)
+        product_data = next((product for product in combined_products if product['pk'] == pk), None)
         
         if product_data:
             return JsonResponse({'message': f'{product_data["name"]} removed from cart.', 'product_name': product_data['name']}, status=200)
@@ -133,7 +156,12 @@ def add_to_wishlist(request, pk):
     if request.method == 'POST':
         with open(Path(settings.BASE_DIR) / 'products.json', 'r') as f:
             products = json.load(f)
-        product_data = next((product for product in products if product['pk'] == pk), None)
+        with open(Path(settings.BASE_DIR) / 'hosting.json', 'r') as f:
+            hosting_services = json.load(f)
+        
+        combined_products = products + hosting_services
+
+        product_data = next((product for product in combined_products if product['pk'] == pk), None)
         
         if not product_data:
             return JsonResponse({'message': 'Product not found.'}, status=404)
@@ -152,21 +180,23 @@ def wishlist(request):
     product_ids = request.session.get('wishlist', [])
     with open(settings.BASE_DIR / 'products.json', 'r') as f:
         products = json.load(f)
+    with open(settings.BASE_DIR / 'hosting.json', 'r') as f:
+        hosting_services = json.load(f)
+
+    combined_products = products + hosting_services
 
     wishlist_products = [
         {**product, 'image': product['images'][0]} 
-        for product in products 
+        for product in combined_products 
         if product['pk'] in product_ids
     ]
     
     return render(request, 'wishlist.html', {'products': wishlist_products})
 
+
 def wishlist_count(request):
     count = len(request.session.get('wishlist', []))
     return JsonResponse({'wishlist_count': count})
-
-
-
 
 
 @csrf_exempt
@@ -179,8 +209,12 @@ def remove_from_wishlist(request, pk):
 
     with open(settings.BASE_DIR / 'products.json', 'r') as f:
         products = json.load(f)
+    with open(settings.BASE_DIR / 'hosting.json', 'r') as f:
+        hosting_services = json.load(f)
+    
+    combined_products = products + hosting_services
 
-    product_data = next((product for product in products if product['pk'] == pk), None)
+    product_data = next((product for product in combined_products if product['pk'] == pk), None)
     if not product_data:
         return JsonResponse({'message': 'Product not found.'}, status=404)
 
@@ -196,41 +230,43 @@ def remove_from_wishlist(request, pk):
 def contact(request):
     return render(request, 'contact.html')
 
-
+@csrf_exempt
+@require_POST
 def create_order(request):
     if request.method == 'POST':
         form = OrderForm(request.POST)
         if form.is_valid():
             cart_quantities = json.loads(request.POST.get('quantities', '[]'))
 
-            # Retrieve products from JSON file or database
+            # Retrieve products and hosting services from JSON files
             with open(settings.BASE_DIR / 'products.json', 'r') as f:
                 products = json.load(f)
+            with open(settings.BASE_DIR / 'hosting.json', 'r') as f:
+                hosting_services = json.load(f)
+            
+            combined_items = products + hosting_services
 
-            # Filter selected products based on cart contents
-            selected_products = []
-            for product in products:
-                for item in cart_quantities:
-                    if product['pk'] == int(item['pk']):
-                        selected_products.append({
-                            'pk': product['pk'],
-                            'name': product['name'],
-                            'quantity': int(item['quantity']),
-                            'price': float(product['price']),
-                            'image': product.get('image', '')
+            # Filter selected products and services based on cart contents
+            selected_items = []
+            for item in combined_items:
+                for cart_item in cart_quantities:
+                    if item['pk'] == int(cart_item['pk']):
+                        selected_items.append({
+                            'pk': item['pk'],
+                            'name': item['name'],
+                            'quantity': int(cart_item['quantity']),
+                            'price': float(item['price']),
+                            'image': item.get('image', '')
                         })
 
-            # Calculate total price of selected products
-            total_price = sum(product['price'] * product['quantity'] for product in selected_products)
+            # Calculate total price of selected items
+            total_price = sum(item['price'] * item['quantity'] for item in selected_items)
 
             # Save order details
             order = form.save(commit=False)
-            order.product_ids = json.dumps(selected_products)  # Store products with quantities as JSON string
+            order.product_ids = json.dumps(selected_items)  # Store items with quantities as JSON string
             order.total_price = total_price
             order.save()
-
-            # Clear cart after order is placed
-            # request.session['cart'] = []
 
             # Return order_id in JSON response
             return JsonResponse({'order_id': order.pk})
@@ -240,22 +276,28 @@ def create_order(request):
     # Handle invalid requests
     return redirect('cart')
 
+    
+
 def invoice(request, order_id):
     order = get_object_or_404(Order, pk=order_id)
 
     # Parse product_ids JSON string into a list of dictionaries
     product_quantities = json.loads(order.product_ids)
 
-    # Retrieve products related to the order from your data source (e.g., JSON file)
+    # Retrieve products and hosting services related to the order from your data source (e.g., JSON files)
     with open(settings.BASE_DIR / 'products.json', 'r') as f:
         products = json.load(f)
+    with open(settings.BASE_DIR / 'hosting.json', 'r') as f:
+        hosting_services = json.load(f)
 
-    # Prepare ordered products with quantities and details
-    ordered_products = []
+    combined_items = products + hosting_services
+
+    # Prepare ordered products and services with quantities and details
+    ordered_items = []
     for item in product_quantities:
-        product = next((p for p in products if p['pk'] == item['pk']), None)
+        product = next((p for p in combined_items if p['pk'] == item['pk']), None)
         if product:
-            ordered_products.append({
+            ordered_items.append({
                 'name': product['name'],
                 'price': product['price'],
                 'quantity': item['quantity'],
@@ -264,7 +306,18 @@ def invoice(request, order_id):
 
     context = {
         'order': order,
-        'products': ordered_products,
+        'products': ordered_items,
         'total_price': order.total_price,  # Ensure total price is passed to the context
     }
     return render(request, 'invoice.html', context)
+
+
+def hosting_services(request):
+    with open(settings.BASE_DIR / 'hosting.json', 'r') as f:
+        services = json.load(f)
+    return render(request, 'hosting_services.html', {'services': services})
+
+def starlink_items(request):
+    with open(settings.BASE_DIR / 'starlink.json', 'r') as f:
+        starlink = json.load(f)
+    return render(request, 'starlink_items.html', {'starlink': starlink})
