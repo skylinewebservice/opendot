@@ -66,7 +66,7 @@
 <section style="background-color: white;">
     <!-- Navigation Bar -->
     <nav class="navbar">
-        <div class="redirect"><a href="{% url 'product_list' %}"> ← Back to shop</a></div>
+        <div class="redirect"><a href="{% url 'all_products_and_services' %}"> ← Back to shop</a></div>
         <div class="cart">
             <span class="cart-count">0</span>
             <a href="{% url 'cart' %}"><img src="{% static 'website/images/cart-icon.svg' %}" alt="Cart"></a>
@@ -117,23 +117,23 @@
                 <h1>{{ product.name }}</h1>
                 <div class="price">
                     <p>₵{{ product.price|intcomma }}</p>
-                    <a href="#" id="openPriceDetailModal"><img src="{% static 'website/images/details1.svg' %}"
-                            alt="">Price Details</a>
+                    <!-- <a href="#" id="openPriceDetailModal"><img src="{% static 'website/images/details1.svg' %}"
+                            alt="">Price Details</a> -->
                 </div>
                 <p>{{ product.description }}</p>
                 <div class="price-cart">
                     <div>
-                        <a href="#" class="button button-primary button-with-icon buy-now"
+                        <!-- <a href="#" class="button button-primary button-with-icon buy-now"
                             data-product="{{ product.name }}" data-image="{% static product.image %}"
                             data-price="{{ product.price }}">
                             <img src="{% static 'website/images/buy.svg' %}" alt="Buy Icon"> Buy It Now
-                        </a>
-                        <a href="#" class="button button-secondary button-with-icon add-to-cart"
+                        </a> -->
+                        <a href="#" class="button button-secondary button-with-icon add-to-cart" style="background-color: #267fdd;"
                             data-product="{{ product.name }}" data-price="{{ product.price }}"
                             data-pk="{{ product.pk }}">
                             <img src="{% static 'website/images/basket.svg' %}" alt="Basket Icon"> Add to Cart
                         </a>
-                        <a href="#" class="button button-secondary button-with-icon add-to-wishlist"
+                        <a href="#" class="button button-secondary button-with-icon add-to-wishlist" 
                             data-product="{{ product.name }}" data-price="{{ product.price }}"
                             data-pk="{{ product.pk }}">
                             <img src="{% static 'website/images/heart1.svg' %}" alt="Heart Icon"> Add to Wishlist

@@ -38,7 +38,7 @@
     },
     {
         "pk": 3,
-        "name": "Power Inverter",
+        "name": "Power Inverter 3000W",
         "price": 1481.74,
         "description": "3000W Voltage Converter Power Inverter 12V to 230V USB + 2AC",
         "images": [
@@ -52,7 +52,7 @@
     },
     {
         "pk": 4,
-        "name": "Power Inverter",
+        "name": "Power Inverter 1000W",
         "price": 493.74,
         "description": "1000W Voltage Converter Power Inverter 12V to 230V USB + 1AC",
         "images": [
@@ -102,7 +102,7 @@
     },
     {
         "pk": 7,
-        "name": "Solar Panel",
+        "name": "Solar Panel 100W ",
         "price": 1210.56,
         "description": "100W Solar module monocrystalline for 12V solar system",
         "images": [
@@ -230,7 +230,7 @@
     },
     {
         "pk": 17,
-        "name": "Solar Panel",
+        "name": "Solar Panel 410W ",
         "price": 1999.16,
         "description": "JA Solar PV Module Black Frame 410W Photovoltaic Panel JAM54S30 Monocrystalline",
         "images": [
@@ -243,7 +243,7 @@
     },
     {
         "pk": 18,
-        "name": "Solar Panel",
+        "name": "Solar Panel 420 Wp",
         "price": 1690.00,
         "description": "Solarmodul 420 Wp FULL-BLACK Suntech N-Type TOPCon monofazial EUR 65,00",
         "images": [
