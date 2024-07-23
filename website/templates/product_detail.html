@@ -219,14 +219,15 @@
             button.addEventListener('click', function (event) {
                 event.preventDefault();
                 const productPk = this.getAttribute('data-pk');
-                fetch("{% url 'add_to_wishlist' pk=0 %}".replace('0', productPk), {
-                    method: 'POST',
-                    headers: {
-                        'X-CSRFToken': "{{ csrf_token }}",
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({ product_id: productPk })
-                })
+                if (confirm('Are you sure you want to add this item to your wishlist?')) {
+                    fetch("{% url 'add_to_wishlist' pk=0 %}".replace('0', productPk), {
+                        method: 'POST',
+                        headers: {
+                            'X-CSRFToken': "{{ csrf_token }}",
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ product_id: productPk })
+                    })
                     .then(response => response.json())
                     .then(data => {
                         alert(data.message);
@@ -235,6 +236,7 @@
                     .catch(error => {
                         console.error('Error:', error);
                     });
+                }
             });
         });
 
@@ -253,20 +255,22 @@
             button.addEventListener('click', function (event) {
                 event.preventDefault();
                 const productPk = this.getAttribute('data-pk');
-                fetch("{% url 'add_to_cart' pk=0 %}".replace('0', productPk), {
-                    method: 'POST',
-                    headers: {
-                        'X-CSRFToken': "{{ csrf_token }}",
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({ product_id: productPk })
-                })
+                if (confirm('Are you sure you want to add this item to your cart?')) {
+                    fetch("{% url 'add_to_cart' pk=0 %}".replace('0', productPk), {
+                        method: 'POST',
+                        headers: {
+                            'X-CSRFToken': "{{ csrf_token }}",
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ product_id: productPk })
+                    })
                     .then(response => response.json())
                     .then(data => {
                         alert(data.message);
                         updateCartCount();
                     })
                     .catch(error => console.error('Error:', error));
+                }
             });
         });
 

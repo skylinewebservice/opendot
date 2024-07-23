@@ -271,3 +271,68 @@ a {
         margin-left: 0;
     }
 }
+
+.success-message {
+    position: fixed;
+    top: 12%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #192941ce;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 1.3rem; /* Adjust based on your design needs */
+    text-align: center;
+    z-index: 1000;
+    animation: fadeIn 0.1s, fadeOut 0.5s 2.5s;
+    max-width: 90%; /* Adjusted for better fit on smaller screens */
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    word-wrap: break-word; /* Ensures long text wraps properly */
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+.animated-emoji {
+    display: inline-block;
+    font-size: 1.5em;
+    margin: 0 0.1em;
+    animation: bounce 1s infinite;
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+@media (max-width: 600px) {
+    .success-message {
+        top: 5%; /* Adjust position for smaller screens */
+        font-size:0.9rem; /* Smaller font size for better fit */
+        padding: 8px 15px; /* Adjust padding for smaller screens */
+        max-width: 50%; /* Ensures message does not exceed screen width */
+    }
+
+    .animated-emoji {
+        font-size: 0.8rem; /* Slightly smaller emojis on small screens */
+    }
+}

@@ -18,10 +18,11 @@ urlpatterns = [
     path('wishlist-count/', views.wishlist_count, name='wishlist_count'),
     path('remove-from-wishlist/<int:pk>/', views.remove_from_wishlist, name='remove_from_wishlist'),
     path('contact/', views.contact, name='contact'),
+    path('send_message/', views.send_message, name='send_message'),
     path('create-order/', views.create_order, name='create_order'),
     path('invoice/<int:order_id>/', views.invoice, name='invoice'),
     path('hosting-services/', views.hosting_services, name='hosting_services'),
     path('starlink_items/', views.starlink_items, name='starlink_items'),
     path('all-products-and-services/', views.all_products_and_services, name='all_products_and_services'),
-    
+     
 ]

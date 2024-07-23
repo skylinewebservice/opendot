@@ -1,8 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 
-
-{% block content%}
+{% block content %}
 
 <!-- contact section -->
 <section class="contact_section layout_padding">
@@ -64,7 +63,8 @@
       <div class="col-md-12">
         <div class="contact_form">
           <h3>Send Us a Message</h3>
-          <form action="#" method="post">
+          <form id="contactForm" action="{% url 'send_message' %}" method="post">
+            {% csrf_token %}
             <input type="text" placeholder="Your Name" name="name" required>
             <input type="email" placeholder="Your Email" name="email" required>
             <textarea placeholder="Your Message" name="message" required></textarea>
@@ -77,5 +77,28 @@
 </section>
 <!-- end contact section -->
 
+<script>
+document.getElementById('contactForm').addEventListener('submit', function(event) {
+  event.preventDefault(); // Prevent the default form submission
 
-    {% endblock content%}
+  var formData = new FormData(this);
+
+  fetch("{% url 'send_message' %}", {
+    method: 'POST',
+    body: formData,
+    headers: {
+      'X-CSRFToken': '{{ csrf_token }}',
+    }
+  })
+  .then(response => response.json())
+  .then(data => {
+    if (data.message) {
+      alert(data.message); // Display the pop-up message
+      document.getElementById('contactForm').reset(); // Reset the form fields
+    }
+  })
+  .catch(error => console.error('Error:', error));
+});
+</script>
+
+{% endblock content %}

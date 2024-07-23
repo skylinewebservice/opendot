@@ -1,18 +1,18 @@
-from django.shortcuts import render, get_object_or_404, redirect
-from django.contrib.auth.decorators import login_required
-from django.urls import reverse
+from django.shortcuts import render, get_object_or_404, redirect # type: ignore
+from django.contrib.auth.decorators import login_required# type: ignore
+from django.urls import reverse# type: ignore
 from .models import Cart, CartItem, Wishlist, Product, Order,HostingService
 from .forms import OrderForm
 import json
-from django.conf import settings
-from django.http import HttpResponse, HttpResponseNotFound, JsonResponse
+from django.conf import settings# type: ignore
+from django.http import HttpResponse, HttpResponseNotFound, JsonResponse # type: ignore
 from .models import Product
-from django.contrib import messages
-from django.views.decorators.csrf import csrf_exempt
+from django.contrib import messages# type: ignore
+from django.views.decorators.csrf import csrf_exempt, csrf_protect# type: ignore
 from pathlib import Path
-from django.views.decorators.http import require_POST
-
-
+from django.views.decorators.http import require_POST# type: ignore
+from .utils import send_order_notification
+from django.core.mail import send_mail
 
 
 def index(request):
@@ -230,6 +230,38 @@ def remove_from_wishlist(request, pk):
 def contact(request):
     return render(request, 'contact.html')
 
+@csrf_protect
+def send_message(request):
+    if request.method == 'POST':
+        name = request.POST['name']
+        email = request.POST['email']
+        message = request.POST['message']
+        
+        # Construct the email subject and message
+        subject = f'Message from {name}'
+        email_message = f'You have received a new message from your website contact form.\n\n'
+        email_message += f'Name: {name}\n'
+        email_message += f'Email: {email}\n\n'
+        email_message += f'Message:\n{message}\n'
+
+        # Send the email
+        send_mail(
+            subject,
+            email_message,
+            settings.DEFAULT_FROM_EMAIL,
+            ['nyphil515@gmail.com'],  # Replace with your email address
+            fail_silently=False,
+        )
+
+   # Return a JSON response
+        return JsonResponse({"message": "Message sent successfully"})
+    
+    return render(request, 'contact.html')
+
+
+
+
+
 @csrf_exempt
 @require_POST
 def create_order(request):
@@ -267,6 +299,9 @@ def create_order(request):
             order.product_ids = json.dumps(selected_items)  # Store items with quantities as JSON string
             order.total_price = total_price
             order.save()
+
+            # Send order notification email
+            send_order_notification(order)
 
             # Return order_id in JSON response
             return JsonResponse({'order_id': order.pk})
@@ -316,6 +351,7 @@ def hosting_services(request):
     with open(settings.BASE_DIR / 'hosting.json', 'r') as f:
         services = json.load(f)
     return render(request, 'hosting_services.html', {'services': services})
+
 
 def starlink_items(request):
     with open(settings.BASE_DIR / 'starlink.json', 'r') as f:
