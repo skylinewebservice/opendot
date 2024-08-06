@@ -57,6 +57,20 @@
         color: #007bff;
         text-decoration: none;
     }
+
+    .under-review {
+        color: red;
+        font-weight: bold;
+    }
+
+    .shop-card-disabled {
+        opacity: 0.5;
+        pointer-events: none;
+    }
+
+    .shop-card-disabled:hover {
+        cursor: not-allowed;
+    }
 </style>
 {% endblock %}
 
@@ -64,7 +78,7 @@
 <!-- Navigation Bar -->
 <section style="background-color: white;">
     <nav class="navbar">
-<div class="logo"><a href="{% url 'all_products_and_services' %}">OpenDot Shop</a></div>
+        <div class="logo"><a href="{% url 'all_products_and_services' %}">OpenDot Shop</a></div>
         <div class="cart">
             <span class="cart-count">0</span>
             <a href="{% url 'cart' %}"><img src="{% static 'website/images/cart-icon.svg' %}" alt="Cart"></a>
@@ -83,29 +97,33 @@
             <div class="categories">
                 <h2>Categories</h2>
                 <ul>
-                            <li><a href="{% url 'all_products_and_services' %}" data-category="all">All</a></li>
-                            <li><a href="{% url 'product_list' %}" data-category="category1">SOLAR</a></li>
-                           <li><a href="{% url 'starlink_items' %}" data-category="category2">STARLINK</a></li>
-                            <li><a href="{% url 'hosting_services' %}" data-category="category3">HOSTING</a></li>
+                    <li><a href="{% url 'all_products_and_services' %}" data-category="all">All</a></li>
+                    <li><a href="{% url 'product_list' %}" data-category="category1">SOLAR</a></li>
+                    <li><a href="{% url 'starlink_items' %}" data-category="category2">STARLINK</a></li>
+                    <li><a href="{% url 'hosting_services' %}" data-category="category3">HOSTING</a></li>
                 </ul>
             </div>
         </div>
 
         {% for service in services %}
-            <div class="shop-card">
+            <div class="shop-card {% if service.under_review %}shop-card-disabled{% endif %}">
                 <img src="{% static service.images.0 %}" alt="{{ service.name }}">
                 <div class="shop-card-content">
                     <p>{{ service.name }}</p>
                     <p>{{ service.description }}</p>
                     <p>₵{{ service.price|intcomma }}</p>
-                    <div class="button-container">
-                        <a href="#" class="button-circle add-to-cart" data-product="{{ service.name }}" data-price="{{ service.price }}" data-pk="{{ service.pk }}">
-                            <img src="{% static 'website/images/basket.svg' %}" alt="Basket Icon">
-                        </a>
-                        <a href="#" class="button-circle add-to-wishlist" data-product="{{ service.name }}" data-price="{{ service.price }}" data-pk="{{ service.pk }}">
-                            <img src="{% static 'website/images/heart1.svg' %}" alt="Heart Icon">
-                        </a>
-                    </div>
+                    {% if service.under_review %}
+                        <p class="under-review">This product is under review.</p>
+                    {% else %}
+                        <div class="button-container">
+                            <a href="#" class="button-circle add-to-cart" data-product="{{ service.name }}" data-price="{{ service.price }}" data-pk="{{ service.pk }}">
+                                <img src="{% static 'website/images/basket.svg' %}" alt="Basket Icon">
+                            </a>
+                            <a href="#" class="button-circle add-to-wishlist" data-product="{{ service.name }}" data-price="{{ service.price }}" data-pk="{{ service.pk }}">
+                                <img src="{% static 'website/images/heart1.svg' %}" alt="Heart Icon">
+                            </a>
+                        </div>
+                    {% endif %}
                 </div>
             </div>
         {% endfor %}

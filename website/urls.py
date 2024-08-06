@@ -24,5 +24,7 @@ urlpatterns = [
     path('hosting-services/', views.hosting_services, name='hosting_services'),
     path('starlink_items/', views.starlink_items, name='starlink_items'),
     path('all-products-and-services/', views.all_products_and_services, name='all_products_and_services'),
+
+    path('test-email/', views.test_email, name='test_email'),
      
 ]

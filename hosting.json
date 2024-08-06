@@ -2,28 +2,31 @@
     {
         "pk": 21,
         "name": "Hosting",
-        "price": 254.00,
+        "price": 0.00,
         "description": "",
         "images": [
             "website/images/hosting.jpg"
-        ]
+        ],
+        "under_review": true
     },
     {
         "pk": 22,
-        "name": "Standard Hosting",
-        "price": 699.06,
+        "name": "Hosting",
+        "price": 0.00,
         "description": "",
         "images": [
             "website/images/hosting.png"
-        ]
+        ],
+        "under_review": true
     },
     {
         "pk": 23,
         "name": "Premium Hosting",
-        "price": 1180.00,
-        "description":"",
+        "price": 0.00,
+        "description": "",
         "images": [
             "website/images/hosting1.png"
-        ]
+        ],
+        "under_review": true
     }
 ]

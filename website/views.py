@@ -301,7 +301,7 @@ def create_order(request):
             order.save()
 
             # Send order notification email
-            send_order_notification(order)
+            #send_order_notification(order)
 
             # Return order_id in JSON response
             return JsonResponse({'order_id': order.pk})
@@ -344,7 +344,7 @@ def invoice(request, order_id):
         'products': ordered_items,
         'total_price': order.total_price,  # Ensure total price is passed to the context
     }
-    return render(request, 'invoice.html', context)
+    return render(request, 'invoice.html', context)                        
 
 
 def hosting_services(request):
@@ -357,3 +357,21 @@ def starlink_items(request):
     with open(settings.BASE_DIR / 'starlink.json', 'r') as f:
         starlink = json.load(f)
     return render(request, 'starlink_items.html', {'starlink': starlink})
+
+
+
+
+
+
+def test_email(request):
+    try:
+        send_mail(
+            'Test Email Subject',
+            'This is a test email body.',
+            'nyphil515@gmail.com',  # Replace with your 'from' email address
+            ['recipient@example.com'],  # Replace with a valid recipient email address
+            fail_silently=False,
+        )
+        return HttpResponse('Email sent successfully.')
+    except Exception as e:
+        return HttpResponse(f'Error: {str(e)}')

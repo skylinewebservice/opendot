@@ -57,18 +57,6 @@
         color: #007bff;
         text-decoration: none;
     }
-
-
-
-    .notice {
-        background-color: #f8d7da;
-        color: #721c24;
-        padding: 10px;
-        text-align: center;
-        margin-bottom: 20px;
-        border: 1px solid #f5c6cb;
-        border-radius: 5px;
-    }
 </style>
 {% endblock %}
 
@@ -87,14 +75,7 @@
         </div>
     </nav>
 
-   
-
-    <h1>STARLINK</h1>
-    <div class="notice">
-        Notice: We are currently out of stock of Starlink products.  These are product we think you would be interested in purchasing
-    </div>
-
-
+    <h1>Hosting Services</h1>
     <div class="shop-product-container">
         <!-- Categories Drawer -->
         <div class="categories-drawer" id="categoriesDrawer">
@@ -102,62 +83,32 @@
             <div class="categories">
                 <h2>Categories</h2>
                 <ul>
-                    <li><a href="{% url 'all_products_and_services' %}" data-category="all">All</a></li>
-                    <li><a href="{% url 'product_list' %}" data-category="category1">SOLAR</a></li>
-                    <li><a href="{% url 'starlink_items' %}" data-category="category2">STARLINK</a></li>
-                    <li><a href="{% url 'hosting_services' %}" data-category="category3">HOSTING</a></li>
+                            <li><a href="{% url 'all_products_and_services' %}" data-category="all">All</a></li>
+                            <li><a href="{% url 'product_list' %}" data-category="category1">SOLAR</a></li>
+                           <li><a href="{% url 'starlink_items' %}" data-category="category2">STARLINK</a></li>
+                            <li><a href="{% url 'hosting_services' %}" data-category="category3">HOSTING</a></li>
                 </ul>
             </div>
         </div>
 
-        <div class="shop-card">
-            <img src="/static/website/images/products/01-a.jpg" alt="Wind Turbine">
-            <div class="shop-card-content">
-                <p>Wind Turbine</p>
-                <a href="/products/1/" style="text-decoration: underline;">Product details</a>
-                <p>₵4,362.54</p>
-                <div class="button-container">
-                    <a href="#" class="button-circle add-to-cart" data-product="Wind Turbine" data-price="4362.54" data-pk="1">
-                        <img src="/static/website/images/basket.svg" alt="Basket Icon">
-                    </a>
-                    <a href="#" class="button-circle add-to-wishlist" data-product="Wind Turbine" data-price="4362.54" data-pk="1">
-                        <img src="/static/website/images/heart1.svg" alt="Heart Icon">
-                    </a>
+        {% for service in services %}
+            <div class="shop-card">
+                <img src="{% static service.images.0 %}" alt="{{ service.name }}">
+                <div class="shop-card-content">
+                    <p>{{ service.name }}</p>
+                    <p>{{ service.description }}</p>
+                    <p>₵{{ service.price|intcomma }}</p>
+                    <div class="button-container">
+                        <a href="#" class="button-circle add-to-cart" data-product="{{ service.name }}" data-price="{{ service.price }}" data-pk="{{ service.pk }}">
+                            <img src="{% static 'website/images/basket.svg' %}" alt="Basket Icon">
+                        </a>
+                        <a href="#" class="button-circle add-to-wishlist" data-product="{{ service.name }}" data-price="{{ service.price }}" data-pk="{{ service.pk }}">
+                            <img src="{% static 'website/images/heart1.svg' %}" alt="Heart Icon">
+                        </a>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="shop-card">
-            <img src="/static/website/images/products/12-a.jpg" alt="Hosting">
-            <div class="shop-card-content">
-                <p>Hybrid Solar Charger/Inverter 10kW</p>
-                <a href="/products/12/" style="text-decoration: underline;">Product details</a>
-                <p>₵₵24,934.0</p>
-                <div class="button-container">
-                    <a href="#" class="button-circle add-to-cart" data-product="Hosting" data-price="254.0" data-pk="21">
-                        <img src="/static/website/images/basket.svg" alt="Basket Icon">
-                    </a>
-                    <a href="#" class="button-circle add-to-wishlist" data-product="Hosting" data-price="254.0" data-pk="21">
-                        <img src="/static/website/images/heart1.svg" alt="Heart Icon">
-                    </a>
-                </div>
-            </div>
-        </div>
-        <div class="shop-card">
-            <img src="/static/website/images/products/07-b.jpg" alt="Solar Panel">
-            <div class="shop-card-content">
-                <p>Solar Panel</p>
-                <a href="/products/18/" style="text-decoration: underline;">Product details</a>
-                <p>₵1,690.0</p>
-                <div class="button-container">
-                    <a href="#" class="button-circle add-to-cart" data-product="Solar Panel" data-price="1690.0" data-pk="18">
-                        <img src="/static/website/images/basket.svg" alt="Basket Icon">
-                    </a>
-                    <a href="#" class="button-circle add-to-wishlist" data-product="Solar Panel" data-price="1690.0" data-pk="18">
-                        <img src="/static/website/images/heart1.svg" alt="Heart Icon">
-                    </a>
-                </div>
-            </div>
-        </div>
+        {% endfor %}
     </div>
 
     <script>
@@ -169,6 +120,7 @@
             categoriesDrawer.classList.toggle('open');
         });
 
+        // Add to wishlist functionality
         document.querySelectorAll('.add-to-wishlist').forEach(button => {
             button.addEventListener('click', function (event) {
                 event.preventDefault();
@@ -238,6 +190,6 @@
         }
 
         updateCartCount();
-</script>
+    </script>
 </section>
 {% endblock content %}

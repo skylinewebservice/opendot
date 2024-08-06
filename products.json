@@ -1,7 +1,7 @@
 [
     {
         "pk": 1,
-        "name": "Wind Turbine",
+        "name": "Wind Turbine 800W",
         "price": 4362.54,
         "description": "800W 24V wind turbine wind generator windmill with MPPT charge controller",
         "images": [
@@ -21,7 +21,7 @@
     },
     {
         "pk": 2,
-        "name": "Lithium Battery",
+        "name": "Lithium Battery 100Ah",
         "price": 4647.37,
         "description": "LiFePO4 lithium battery 12V 100Ah BMS for solar",
         "images": [
@@ -165,7 +165,7 @@
     },
     {
         "pk": 12,
-        "name": "Hybrid Solar Charger/Inverter",
+        "name": "Hybrid Solar Charger/Inverter 10kW",
         "price": 24934.00,
         "description": "GoodWe GW10K-ET plus 10kW hybrid inverter including smart meter emergency power WLAN",
         "images": [
@@ -185,7 +185,7 @@
     },
     {
         "pk": 14,
-        "name": "Solar Lithium Battery",
+        "name": "Solar Lithium Battery 12.5 kWh",
         "price": 50699.74,
         "description": "Battery storage Premium LiFePO4 Lithium 12.5 kWh 250Ah HOFMAN-ENERGY",
         "images": [
@@ -243,9 +243,9 @@
     },
     {
         "pk": 18,
-        "name": "Solar Panel 420 Wp",
+        "name": "Solar Panel 420 W",
         "price": 1690.00,
-        "description": "Solarmodul 420 Wp FULL-BLACK Suntech N-Type TOPCon monofazial EUR 65,00",
+        "description": "Solar module 420 W FULL-BLACK Suntech N-Type TOPCon monofazial ",
         "images": [
             "website/images/products/07-b.jpg",
             "website/images/products/07-a.jpg",
