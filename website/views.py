@@ -36,7 +36,8 @@ def all_products_and_services(request):
     with open(settings.BASE_DIR / 'hosting.json', 'r') as f:
         services = json.load(f)
 
-    combined_items = products + services
+    #combined_items = products + services
+    combined_items = [item for item in products + services if not item.get('under_review', False)]
 
     return render(request, 'all_products_and_services.html', {'items': combined_items})
 
@@ -350,6 +351,10 @@ def invoice(request, order_id):
 def hosting_services(request):
     with open(settings.BASE_DIR / 'hosting.json', 'r') as f:
         services = json.load(f)
+
+       # Filter out under-review services
+    visible_services = [service for service in services if not service.get('under_review', False)]
+
     return render(request, 'hosting_services.html', {'services': services})
 
 
