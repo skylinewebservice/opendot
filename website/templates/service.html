@@ -21,6 +21,9 @@
 </li>
 
 {% endblock %} -->
+{% block extra_css %}
+<link href="{% static 'website/css/service.css' %}" rel="stylesheet" />
+{% endblock %}
 
 {% block content%}
 
@@ -154,7 +157,7 @@
     </div>
         </div>
           <div class="btn-box">
-            <a href=""> Contact Us </a>
+            <a href="{% url 'contact' %}"> Contact Us </a>
           </div>
         </div>
       </div>

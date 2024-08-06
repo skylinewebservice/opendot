@@ -20,7 +20,9 @@
 </li>
 
 {% endblock %} -->
-
+{% block extra_css %}
+<link href="{% static 'website/css/service.css' %}" rel="stylesheet" />
+{% endblock %}
       {% block content%}
       <!-- slider section -->
       <section class="slider_section">
@@ -223,7 +225,7 @@
                 At Opendot, we're driven by a singular passion: to revolutionize the way businesses operate in the digital landscape. We understand the ever-evolving demands of the modern market, and we're here to provide cutting-edge solutions that empower organizations to thrive in the digital age.
               </p>
               <p>
-                Founded by a team of forward-thinking tech enthusiasts, Opendot brings together years of industry experience and expertise in software development, web services, and digital transformation. Our mission is simple yet.................
+                Founded by a team of forward-thinking tech enthusiasts, Opendot brings together years of industry experience and expertise in software development, web services, and digital transformation. Our mission is simple yet...
               </p>
               <a href="{% url 'about' %}"> Read More </a>
             </div>

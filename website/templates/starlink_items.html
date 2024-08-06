@@ -1,0 +1,243 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load humanize %}
+
+{% block extra_css %}
+<link href="{% static 'website/css/productlist.css' %}" rel="stylesheet" />
+<style>
+    .categories-drawer {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 300px;
+        height: 100%;
+        background-color: #f5f5f5;
+        border-right: 1px solid #ddd;
+        transform: translateX(-100%);
+        transition: transform 0.3s ease-in-out;
+        z-index: 1000;
+    }
+
+    .categories-drawer.open {
+        transform: translateX(0);
+    }
+
+    .categories-sign {
+        position: absolute;
+        top: 200px;
+        right: -50px;
+        width: 50px;
+        height: 50px;
+        background-color: #333;
+        color: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        border-radius: 5px 0 0 5px;
+    }
+
+    .categories h2 {
+        margin: 20px;
+    }
+
+    .categories ul {
+        list-style-type: none;
+        margin: 20px;
+        padding: 0;
+    }
+
+    .categories ul li {
+        padding: 10px;
+        border-bottom: 1px solid #ddd;
+        background-color: #fff;
+    }
+
+    .categories ul li a {
+        color: #007bff;
+        text-decoration: none;
+    }
+
+
+
+    .notice {
+        background-color: #f8d7da;
+        color: #721c24;
+        padding: 10px;
+        text-align: center;
+        margin-bottom: 20px;
+        border: 1px solid #f5c6cb;
+        border-radius: 5px;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<!-- Navigation Bar -->
+<section style="background-color: white;">
+    <nav class="navbar">
+<div class="logo"><a href="{% url 'all_products_and_services' %}">OpenDot Shop</a></div>
+        <div class="cart">
+            <span class="cart-count">0</span>
+            <a href="{% url 'cart' %}"><img src="{% static 'website/images/cart-icon.svg' %}" alt="Cart"></a>
+        </div>
+        <div class="wishlist">
+            <span class="wishlist-count">0</span>
+            <a href="{% url 'wishlist' %}"><img src="{% static 'website/images/heart1.svg' %}" alt="Wishlist"></a>
+        </div>
+    </nav>
+
+   
+
+    <h1>STARLINK</h1>
+    <div class="notice">
+        Notice: We are currently out of stock of Starlink products.  These are product we think you would be interested in purchasing
+    </div>
+
+
+    <div class="shop-product-container">
+        <!-- Categories Drawer -->
+        <div class="categories-drawer" id="categoriesDrawer">
+            <div class="categories-sign" id="categoriesSign">☰</div>
+            <div class="categories">
+                <h2>Categories</h2>
+                <ul>
+                    <li><a href="{% url 'all_products_and_services' %}" data-category="all">All</a></li>
+                    <li><a href="{% url 'product_list' %}" data-category="category1">SOLAR</a></li>
+                    <li><a href="{% url 'starlink_items' %}" data-category="category2">STARLINK</a></li>
+                    <li><a href="{% url 'hosting_services' %}" data-category="category3">HOSTING</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="shop-card">
+            <img src="/static/website/images/products/01-a.jpg" alt="Wind Turbine">
+            <div class="shop-card-content">
+                <p>Wind Turbine</p>
+                <a href="/products/1/" style="text-decoration: underline;">Product details</a>
+                <p>₵4,362.54</p>
+                <div class="button-container">
+                    <a href="#" class="button-circle add-to-cart" data-product="Wind Turbine" data-price="4362.54" data-pk="1">
+                        <img src="/static/website/images/basket.svg" alt="Basket Icon">
+                    </a>
+                    <a href="#" class="button-circle add-to-wishlist" data-product="Wind Turbine" data-price="4362.54" data-pk="1">
+                        <img src="/static/website/images/heart1.svg" alt="Heart Icon">
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="shop-card">
+            <img src="/static/website/images/products/12-a.jpg" alt="Hosting">
+            <div class="shop-card-content">
+                <p>Hybrid Solar Charger/Inverter 10kW</p>
+                <a href="/products/12/" style="text-decoration: underline;">Product details</a>
+                <p>₵₵24,934.0</p>
+                <div class="button-container">
+                    <a href="#" class="button-circle add-to-cart" data-product="Hosting" data-price="254.0" data-pk="21">
+                        <img src="/static/website/images/basket.svg" alt="Basket Icon">
+                    </a>
+                    <a href="#" class="button-circle add-to-wishlist" data-product="Hosting" data-price="254.0" data-pk="21">
+                        <img src="/static/website/images/heart1.svg" alt="Heart Icon">
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="shop-card">
+            <img src="/static/website/images/products/07-b.jpg" alt="Solar Panel">
+            <div class="shop-card-content">
+                <p>Solar Panel</p>
+                <a href="/products/18/" style="text-decoration: underline;">Product details</a>
+                <p>₵1,690.0</p>
+                <div class="button-container">
+                    <a href="#" class="button-circle add-to-cart" data-product="Solar Panel" data-price="1690.0" data-pk="18">
+                        <img src="/static/website/images/basket.svg" alt="Basket Icon">
+                    </a>
+                    <a href="#" class="button-circle add-to-wishlist" data-product="Solar Panel" data-price="1690.0" data-pk="18">
+                        <img src="/static/website/images/heart1.svg" alt="Heart Icon">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Toggle categories drawer
+        const categoriesSign = document.getElementById('categoriesSign');
+        const categoriesDrawer = document.getElementById('categoriesDrawer');
+
+        categoriesSign.addEventListener('click', function() {
+            categoriesDrawer.classList.toggle('open');
+        });
+
+        document.querySelectorAll('.add-to-wishlist').forEach(button => {
+            button.addEventListener('click', function (event) {
+                event.preventDefault();
+                const productPk = this.getAttribute('data-pk');
+                if (confirm('Are you sure you want to add this item to your wishlist?')) {
+                    fetch("{% url 'add_to_wishlist' pk=0 %}".replace('0', productPk), {
+                        method: 'POST',
+                        headers: {
+                            'X-CSRFToken': "{{ csrf_token }}",
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ product_id: productPk })
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        alert(data.message);
+                        updateWishlistCount();
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                    });
+                }
+            });
+        });
+
+        function updateWishlistCount() {
+            fetch("{% url 'wishlist_count' %}")
+                .then(response => response.json())
+                .then(data => {
+                    document.querySelector('.wishlist-count').textContent = data.wishlist_count;
+                })
+                .catch(error => console.error('Error fetching wishlist count:', error));
+        }
+
+        updateWishlistCount();
+
+        document.querySelectorAll('.add-to-cart').forEach(button => {
+            button.addEventListener('click', function (event) {
+                event.preventDefault();
+                const productPk = this.getAttribute('data-pk');
+                if (confirm('Are you sure you want to add this item to your cart?')) {
+                    fetch("{% url 'add_to_cart' pk=0 %}".replace('0', productPk), {
+                        method: 'POST',
+                        headers: {
+                            'X-CSRFToken': "{{ csrf_token }}",
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ product_id: productPk })
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        alert(data.message);
+                        updateCartCount();
+                    })
+                    .catch(error => console.error('Error:', error));
+                }
+            });
+        });
+
+        function updateCartCount() {
+            fetch("{% url 'cart_count' %}")
+                .then(response => response.json())
+                .then(data => {
+                    document.querySelector('.cart-count').textContent = data.cart_count;
+                })
+                .catch(error => console.error('Error fetching cart count:', error));
+        }
+
+        updateCartCount();
+</script>
+</section>
+{% endblock content %}

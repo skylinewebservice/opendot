@@ -51,8 +51,14 @@
     <!-- Custom styles for this template -->
     <link href="{% static 'website/css/style.css' %}" rel="stylesheet" />
     <link href="{% static 'website/css/style2.css' %}" rel="stylesheet" />
+
     <!-- responsive style -->
     <link href="{% static 'website/css/responsive.css' %}" rel="stylesheet" />
+
+        <!-- Additional CSS -->
+        {% block extra_css %}
+        {% endblock extra_css %}
+        
   </head>
 
   <body>
@@ -108,6 +114,44 @@
             <li class="nav-item {% if request.path == '/why/' %}active{% endif %}">
               <a class="nav-link {% if request.path == '/why/' %}active-tab{% endif %}" href="{% url 'why' %}">Why Us</a>
             </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Product
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <div class="container" style="text-align: center;">
+                      <div class="row">
+                          <div class="col-sm-4">
+                              <div class="card" id="hosting">
+                                  <div class="card-body">
+                                      <h5 class="card-title">HOSTING</h5>
+                                      <p class="card-text"></p>
+                                      <a href="{% url 'hosting_services' %}" class="btn btn-primary">View Details</a>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="col-sm-4">
+                              <div class="card" id="starlink">
+                                  <div class="card-body">
+                                      <h5 class="card-title">STARLINK</h5>
+                                      <p class="card-text"></p>
+                                      <a href="{% url 'starlink_items' %}" class="btn btn-primary">View Details</a>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="col-sm-4">
+                              <div class="card" id="solar">
+                                  <div class="card-body">
+                                      <h5 class="card-title">SOLAR</h5>
+                                      <p class="card-text"></p>
+                                      <a href="{% url 'product_list' %}" class="btn btn-primary">View Details</a>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </li>
             <li class="nav-item {% if request.path == '/contact/' %}active{% endif %}">
               <a class="nav-link {% if request.path == '/contact/' %}active-tab{% endif %}" href="{% url 'contact' %}">Contact</a>
             </li>
@@ -136,7 +180,7 @@
               <div class="info_contact">
                 <h4>Address</h4>
                 <div class="contact_link_box">
-                  <a href="">
+                  <a href="https://www.google.com/maps/search/?api=1&query=JWHG%2B2W%2C+Accra" target="_blank">
                     <i class="fa fa-map-marker" aria-hidden="true"></i>
                     <span>[47 Eban AVE, Tema Metropolis, Greater Accra Region]</span>
                   </a>
@@ -144,29 +188,29 @@
                     <i class="fa fa-phone" aria-hidden="true"></i>
                     <span> +233 537882387 </span>
                   </section23>
-                  <a href="mailto://info@skylinewebservice.com">
+                  <a href="mailto://info@skylinewebservice.com" target="_blank">
                     <i class="fa fa-envelope" aria-hidden="true"></i>
                     <span> info[at]opendotsolutions.com </span>
                   </a>
                 </div>
               </div>
               <div class="info_social">
-                <a href="https://www.facebook.com/profile.php?id=61558175558061&mibextid=ZbWKwL">
-                  <i class="fa fa-facebook" aria-hidden="true"></i>
+                <a href="https://www.facebook.com/profile.php?id=61558175558061&mibextid=ZbWKwL" target="_blank">
+                  <i class="fa fa-facebook" aria-hidden="true"  ></i>
                 </a>
-                <a href="https://t.me/Opendot1">
+                <a href="https://t.me/Opendot1" target="_blank">
                   <i class="fa fa-telegram" aria-hidden="true"></i>
                 </a>
-                <a href="https://wa.me/qr/BEONH6ACB4ZLN1">
+                <a href="https://wa.me/qr/BEONH6ACB4ZLN1" target="_blank">
                   <i class="fa fa-whatsapp" aria-hidden="true"></i>
                 </a>
-                <a href="http://www.linkedin.com/in/opendot-solutions-995233304">
+                <a href="http://www.linkedin.com/in/opendot-solutions-995233304" target="_blank">
                   <i class="fa fa-linkedin" aria-hidden="true"></i>
                 </a>
-                <a href="https://www.instagram.com/opendot.solutions/">
+                <a href="https://www.instagram.com/opendot.solutions/" target="_blank">
                   <i class="fa fa-instagram" aria-hidden="true"></i>
               </a>
-              <a href="https://www.snapchat.com/add/opendotsolution?share_id=rQ9W-xzu7Sw&locale=en-GB">
+              <a href="https://www.snapchat.com/add/opendotsolution?share_id=rQ9W-xzu7Sw&locale=en-GB" target="_blank">
                 <i class="fa fa-snapchat" aria-hidden="true"></i>
             </a>
               </div>

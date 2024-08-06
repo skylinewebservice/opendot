@@ -1,0 +1,75 @@
+/* Import base styles */
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+/* Content and layout adjustments */
+body {
+    font-family: Arial, sans-serif;
+    background-color: white;
+    color: black;
+    margin: 0;
+    padding: 0;
+}
+
+.print-button-container {
+    display: none;
+}
+
+.invoice-main-container {
+    width: 100%;
+    margin: 0;
+    padding: 20px;
+    box-shadow: none;
+}
+
+.product-details table {
+    border-collapse: collapse;
+}
+
+.product-details th, .product-details td {
+    padding: 10px;
+    border: 1px solid #000;
+    text-align: left;
+}
+
+.product-details th {
+    background-color: #f8f8f8;
+}
+
+.product-details td img {
+    max-width: 50px;
+    height: auto;
+}
+
+.total-price h3 {
+    text-align: right;
+    color: black;
+}
+
+@media print {
+    body * {
+        visibility: hidden;
+    }
+
+    .invoice-main-container, .invoice-main-container * {
+        visibility: visible;
+    }
+
+    .invoice-main-container {
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+
+    .order-details p,
+    .product-details th,
+    .product-details td,
+    .total-price h3 {
+        font-size: 24px; /* Adjust as needed */
+    }
+
+    .product-details table {
+        font-size: 20px; /* Adjust as needed */
+    }
+
+
+}

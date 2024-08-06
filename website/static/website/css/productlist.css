@@ -1,0 +1,149 @@
+/* Existing styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #33333300;
+    color: #fff;
+}
+a {
+    text-decoration: none;
+    color: #007bff;
+}
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.cart {
+    position: relative;
+    margin-left: auto; /* Move the cart to the right */
+}
+
+.cart img {
+    width: 30px;
+    height: 30px;
+}
+
+.cart-count {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    background-color: rgb(0, 26, 255);
+    color: white;
+    border-radius: 50%;
+    padding: 2px 6px;
+    font-size: 14px;
+}
+
+.wishlist {
+    position: relative;
+    margin-left: 50px; /* Adjust the margin between cart and wishlist */
+}
+
+.wishlist img {
+    width: 30px;
+    height: 30px;
+}
+
+.wishlist-count {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    background-color: rgb(0, 26, 255);
+    color: white;
+    border-radius: 50%;
+    padding: 2px 6px;
+    font-size: 14px;
+}
+
+h1 {
+    text-align: center;
+    padding: 20px;
+    background-color: #f5f5f5;
+    margin: 0;
+    font-size: 2em;
+}
+
+.shop-product-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around; /* Center items horizontally with spacing */
+    align-items: flex-start; /* Align items at the start (top) */
+    padding: 20px;
+}
+
+.shop-card {
+    width: 300px; /* Adjust the width of the card */
+    height: 360px; /* Adjust the height of the card */
+    margin: 16px;
+    padding: 10px; /* Adjust padding to control inner spacing */
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s, transform 0.3s;
+    text-align: center;
+}
+
+.shop-card img {
+    max-width: 100%; /* Ensure image scales within the card */
+    max-height: 150px; /* Limit image height */
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.shop-card-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.shop-card-content p {
+    font-size: 14px; /* Adjust font size for paragraphs */
+    color: #757575;
+    margin: 10px 0;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.button-circle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px; /* Size of the circle */
+    height: 50px; /* Size of the circle */
+    background-color: #008ae600; /* Background color of the circle */
+    border-radius: 50%; /* Makes it a circle */
+    margin: 5px; /* Adjust spacing between circles */
+    text-decoration: none;
+    color: white;
+    transition: transform 0.3s, opacity 0.3s;
+    border: 1px solid #ffffff00;
+    position: relative;
+}
+
+.button-circle:hover {
+    transform: scale(1.1); /* Hover effect to scale up */
+}
+
+.button-circle img {
+    width: 24px; /* Size of the icon inside the circle */
+    height: 24px; /* Size of the icon inside the circle */
+}
+
+.add-to-wishlist {
+    background-color: #40a3ff00; /* Background color for wishlist button */
+}
+

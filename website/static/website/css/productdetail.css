@@ -1,0 +1,488 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.main-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    
+}
+
+
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #ffffff00;
+    color: #fff;
+}
+a {
+    text-decoration: none;
+    color: #007bff;
+}
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.cart {
+    position: relative;
+    margin-left: auto; /* Move the cart to the right */
+}
+
+.cart img {
+    width: 30px;
+    height: 30px;
+}
+
+.cart-count {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    background-color: rgb(0, 26, 255);
+    color: white;
+    border-radius: 50%;
+    padding: 2px 6px;
+    font-size: 14px;
+}
+
+.wishlist {
+    position: relative;
+    margin-left: 50px; /* Adjust the margin between cart and wishlist */
+}
+
+.wishlist img {
+    width: 30px;
+    height: 30px;
+}
+
+.wishlist-count {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    background-color: rgb(0, 26, 255);
+    color: white;
+    border-radius: 50%;
+    padding: 2px 6px;
+    font-size: 14px;
+}
+
+/* .container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    padding: 20px;
+} */
+
+.shop-card {
+    display: flex;
+    flex-direction: row;
+    border: 0px solid #ccc;
+    padding: 16px;
+    margin: 16px;
+    width: 2000px; /* Increased width */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.0);
+}
+
+.carousel-container {
+    width: 50%; /* Adjust width as needed */
+}
+
+.carousel {
+    position: relative;
+    width: 100%; /* Full width of container */
+    height: 500px; /* Increased height */
+    overflow: hidden;
+    margin-right: 20px;
+}
+
+.carousel img {
+    width: 100%;
+    height: 100%;
+    display: none;
+    object-fit: cover;
+}
+
+.carousel img.active {
+    display: block;
+}
+
+.carousel .prev,
+.carousel .next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.carousel .prev {
+    left: 10px;
+}
+
+.carousel .next {
+    right: 10px;
+}
+
+/* Additional Styles for Preview Carousel */
+.preview-carousel {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.preview-wrapper {
+    overflow: hidden;
+    width: calc(70px * 8); /* Adjust based on number of visible previews */
+}
+
+.preview {
+    display: flex;
+    transition: transform 0.3s ease-in-out;
+}
+
+.detail-carousel-prev, .carousel-next {
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    margin: 0 5px;
+}
+
+.preview img {
+    width: 70px;
+    height: 70px;
+    margin: 0 5px;
+    cursor: pointer;
+    opacity: 0.5;
+    object-fit: cover;
+}
+
+.preview img.active {
+    opacity: 1;
+    border: 2px solid #007bff;
+}
+
+@media (max-width: 768px) {
+    .preview-wrapper {
+        width: 100%;
+    }
+}
+
+
+.info {
+    flex: 1;
+    padding: 16px;
+}
+
+.info h1 {
+    margin: 0 0 8px 0;
+    font-size: 28px; /* Increased font size */
+}
+
+.info p {
+    margin: 0 0 16px 0;
+    font-size: 18px; /* Increased font size */
+}
+
+.price-cart {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 16px;
+}
+
+.price {
+    font-size: 1.5em; /* Increased font size */
+    font-weight: bold;
+}
+
+/* Button Styles */
+.button {
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    padding: 10px 20px;
+    font-size: 1.2em;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    text-decoration: none;
+    margin-bottom: 10px;
+    width: 350px;
+}
+
+.button-primary {
+    background-color: #007bff;
+    color: white;
+}
+
+.button-primary:hover {
+    background-color: #0056b3;
+}
+
+.button-secondary {
+    background-color: #ccc;
+    color: black;
+}
+
+.button-secondary:hover {
+    background-color: #999;
+}
+
+.button-with-icon {
+    display: flex;
+    align-items: center; /* Center-align items vertically */
+    gap: 5px;
+}
+
+.button-with-icon img,
+.button-with-icon svg {
+    width: 20px;
+    height: 20px;
+}
+
+/* CSS for Price Details Button */
+.price {
+    display: block;
+    align-items: center;
+    margin-bottom: 10px;
+    font-size: 13px;
+}
+
+.price p {
+    margin-right: 10px;
+}
+
+.price a {
+    color: #15171a;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.price a {
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.price a img {
+    width: 20px;
+    height: auto;
+    margin-right: 5px;
+}
+
+.price a.price-details-link {
+    text-decoration: underline; 
+}
+
+
+/* Fullscreen modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    padding-top: 5%;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.89);
+}
+
+.modal-content {
+    margin: auto;
+    display: block;
+    width: 75%;
+    height: 80%;
+}
+
+.modal-content,
+.prev,
+.next {
+    animation-name: zoom;
+    animation-duration: 0.6s;
+}
+
+@keyframes zoom {
+    from {
+        transform: scale(0);
+    }
+
+    to {
+        transform: scale(1);
+    }
+}
+
+.close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.close:hover,
+.close:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* CSS for Price Details in the modal */
+.x-price-transparency-overlay {
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.x-price-transparency-overlay__items {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.ux-labels-values {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.ux-labels-values__labels {
+    flex: 1;
+}
+
+.ux-labels-values__values {
+    flex: 1;
+    text-align: right;
+}
+
+.ux-textspans {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.ux-textspans--BOLD {
+    font-weight: bold;
+}
+
+.ux-textspans--SECONDARY {
+    color: #757575;
+}
+
+.ux-textspans--STRIKETHROUGH {
+    text-decoration: line-through;
+}
+
+.ux-textspans--POSITIVE {
+    color: #4caf50;
+}
+
+/* Adjust modal positioning and appearance */
+.modal-content {
+    width: 80%;
+    max-width: 700px;
+}
+
+.lightbox-dialog__window {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(187, 186, 186, 0);
+}
+
+.lightbox-dialog__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.lightbox-dialog__title {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.lightbox-dialog__close-button {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #757575;
+}
+
+/* Add media query for mobile responsiveness */
+@media screen and (max-width: 768px) {
+    .main-container {
+        flex-direction: column;
+    }
+
+    .categories {
+        width: 100%;
+        border-right: none;
+        border-bottom: 1px solid #ddd;
+    }
+
+    .card {
+        flex-direction: column;
+        align-items: center;
+        width: 80%;
+    }
+
+    .carousel-container {
+        width: 100%;
+        margin-right: 0;
+    }
+    .shop-card {
+        flex-direction: column;
+        width: 100%; /* Full width on small screens */
+        padding: 10px;
+    }
+
+    .info {
+        padding: 0;
+    }
+
+    .button {
+        width: 150%;
+        margin-bottom: 10px;
+    }
+
+    .info {
+        padding: 10px;
+    }
+
+
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 9999;
+        padding-top: 12%;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.89);
+    }
+    .modal-content {
+        width: 90%;
+        max-width: 700px;
+    }
+}
+

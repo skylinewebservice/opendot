@@ -1,0 +1,212 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load humanize %}
+
+
+{% block extra_css %}
+<link href="{% static 'website/css/wishlist.css' %}" rel="stylesheet" />
+<style>
+    .categories-drawer {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 300px;
+        height: 100%;
+        background-color: #f5f5f5;
+        border-right: 1px solid #ddd;
+        transform: translateX(-100%);
+        transition: transform 0.3s ease-in-out;
+        z-index: 1000;
+    }
+
+    .categories-drawer.open {
+        transform: translateX(0);
+    }
+
+    .categories-sign {
+        position: absolute;
+        top: 200px;
+        right: -50px;
+        width: 50px;
+        height: 50px;
+        background-color: #333;
+        color: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        border-radius: 5px 0 0 5px;
+    }
+
+    .categories h2 {
+        margin: 20px;
+    }
+
+    .categories ul {
+        list-style-type: none;
+        margin: 20px;
+        padding: 0;
+    }
+
+    .categories ul li {
+        padding: 10px;
+        border-bottom: 1px solid #ddd;
+        background-color: #fff;
+    }
+
+    .categories ul li a {
+        color: #007bff;
+        text-decoration: none;
+    }
+</style>
+{% endblock %}
+
+   
+{% block content%}
+<section style="background-color: white;">
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+<div class="logo"><a href="{% url 'all_products_and_services' %}">OpenDot Shop</a></div>
+        <div class="cart">
+            <span class="cart-count">0</span>
+            <a href="{% url 'cart' %}"><img src="{% static 'website/images/cart-icon.svg' %}" alt="Cart"></a>
+        </div>
+        <div class="wishlist">
+            <span class="wishlist-count">0</span>
+            <a href="{% url 'wishlist' %}">
+                <img src="{% static 'website/images/heart1.svg' %}" alt="Wishlist">
+            </a>
+        </div>
+    </nav>
+
+    <h1>Wishlist</h1>
+
+    {% if products %}
+        <div class="product-container">
+              <!-- Categories Drawer -->
+        <div class="categories-drawer" id="categoriesDrawer">
+            <div class="categories-sign" id="categoriesSign">☰</div>
+            <div class="categories">
+                <h2>Categories</h2>
+                <ul>
+                            <li><a href="{% url 'all_products_and_services' %}" data-category="all">All</a></li>
+                            <li><a href="{% url 'product_list' %}" data-category="category1">SOLAR</a></li>
+                           <li><a href="{% url 'starlink_items' %}" data-category="category2">STARLINK</a></li>
+                            <li><a href="{% url 'hosting_services' %}" data-category="category3">HOSTING</a></li>
+                </ul>
+            </div>
+        </div>
+
+            {% for product in products %}
+                <div class="shop-card" data-pk="{{ product.pk }}">
+                    <img src="{% static product.image %}" alt="{{ product.name }}">
+                    <div class="shop-card-content">
+                        <p>{{ product.name }}</p>
+                        <p>₵{{ product.price|intcomma }}</p>
+                        <a href="{% url 'product_detail' product.pk %}" style="text-decoration: underline;">Product details</a>
+                        
+                        <div class="button-container">
+                            <a href="#" class="button-circle add-to-cart" data-product="{{ product.name }}" data-price="{{ product.price }}" data-pk="{{ product.pk }}">
+                                <img src="{% static 'website/images/basket.svg' %}" alt="Basket Icon">
+                            </a>  
+                        </div>
+                        <div class="button-container">
+                            <a href="#" class="button-circle remove-from-wishlist" data-pk="{{ product.pk }}">
+                                <img src="{% static 'website/images/trash.svg' %}" alt="Remove Icon">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="empty-wishlist-message">
+            <p>Your wishlist is empty. <br> <a href="{% url 'all_products_and_services' %}">Back to store</a></p>
+        </div>
+    {% endif %}
+
+    <script>
+        // Toggle categories drawer
+        const categoriesSign = document.getElementById('categoriesSign');
+        const categoriesDrawer = document.getElementById('categoriesDrawer');
+
+        categoriesSign.addEventListener('click', function() {
+            categoriesDrawer.classList.toggle('open');
+        });
+        document.querySelectorAll('.remove-from-wishlist').forEach(button => {
+            button.addEventListener('click', function(event) {
+                event.preventDefault();
+                const productPk = this.getAttribute('data-pk');
+                fetch("{% url 'remove_from_wishlist' pk=0 %}".replace('0', productPk), {
+                    method: 'POST',
+                    headers: {
+                        'X-CSRFToken': "{{ csrf_token }}",
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ product_id: productPk })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    alert(data.message);
+                    updateWishlistCount();
+                    document.querySelector(`.card[data-pk="${productPk}"]`).remove();
+                    if (document.querySelectorAll('.card').length === 0) {
+                        document.querySelector('.product-container').innerHTML = `
+                            <div class="empty-wishlist-message">
+                                <p>Your wishlist is empty. <br> <a href="{% url 'all_products_and_services' %}">Back to store</a></p>
+                            </div>`;
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+            });
+        });
+
+        function updateWishlistCount() {
+            fetch("{% url 'wishlist_count' %}")
+                .then(response => response.json())
+                .then(data => {
+                    document.querySelector('.wishlist-count').textContent = data.wishlist_count;
+                })
+                .catch(error => console.error('Error fetching wishlist count:', error));
+        }
+
+        updateWishlistCount();
+
+        document.querySelectorAll('.add-to-cart').forEach(button => {
+            button.addEventListener('click', function (event) {
+                event.preventDefault();
+                const productPk = this.getAttribute('data-pk');
+                if (confirm('Are you sure you want to add this item to your cart?')) {
+                    fetch("{% url 'add_to_cart' pk=0 %}".replace('0', productPk), {
+                        method: 'POST',
+                        headers: {
+                            'X-CSRFToken': "{{ csrf_token }}",
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ product_id: productPk })
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        alert(data.message);
+                        updateCartCount();
+                    })
+                    .catch(error => console.error('Error:', error));
+                }
+            });
+        });
+
+        function updateCartCount() {
+            fetch("{% url 'cart_count' %}")
+                .then(response => response.json())
+                .then(data => {
+                    document.querySelector('.cart-count').textContent = data.cart_count;
+                })
+                .catch(error => console.error('Error fetching cart count:', error));
+        }
+
+        updateCartCount();
+    </script>
+    </section>
+    {% endblock content%}
