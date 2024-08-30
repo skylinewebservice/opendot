@@ -15,6 +15,7 @@
 #git push master master -f
 
 #git push <name>
+git status
 git pull
 git add .
 git commit -am "$(date)"
