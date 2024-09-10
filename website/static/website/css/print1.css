@@ -73,6 +73,7 @@ body {
 
 
 }
+/* Add CSS to align text and image side by side */
 .payment-options-content {
     display: flex;
     justify-content: space-between; /* Distribute space evenly between text and image */

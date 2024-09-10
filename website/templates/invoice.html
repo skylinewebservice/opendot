@@ -4,8 +4,57 @@
 
 {% block extra_css %}
 <link href="{% static 'website/css/invoice.css' %}" rel="stylesheet" />
-<link href="{% static 'website/css/print.css' %}" rel="stylesheet" media="print" />
+<link href="{% static 'website/css/print1.css' %}" rel="stylesheet" media="print" />
+<style>
+/* Main container for text and image */
+.payment-options-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap; /* Ensure content wraps on smaller screens */
+}
+
+/* Text container */
+.payment-options-text {
+    flex: 1;
+    padding-right: 20px;
+}
+
+/* Image container */
+.payment-options-image img {
+    max-width: 100%; /* Ensure the image fits within its container */
+    height: auto; /* Maintain aspect ratio */
+    width: 450px; /* Set a default width for larger screens */
+}
+
+/* Responsive rules for smaller screens */
+@media (max-width: 768px) {
+    .payment-options-content {
+        flex-direction: column; /* Stack text and image vertically on smaller screens */
+        align-items: flex-start;
+    }
+
+    .payment-options-text {
+        padding-right: 0;
+    }
+
+    .payment-options-image img {
+        width: 100%; /* Ensure the image takes up full width on small screens */
+        max-width: 300px; /* Limit the maximum width */
+        margin-top: 10px; /* Add spacing when stacked */
+    }
+}
+
+/* Adjustments for extra small screens */
+@media (max-width: 480px) {
+    .payment-options-image img {
+        width: 100%; /* Full width on small screens */
+        max-width: 200px; /* Limit max width for extra small screens */
+    }
+}
+</style>
 {% endblock %}
+
 
 {% block content %}
 <section style="background-color: white;">
@@ -52,24 +101,28 @@
 
         <div class="payment-options">
             <h2>Payment Options</h2>
-            <p><strong>Bank Transfer Option:</strong></p>
-            <p>Account Name: Ibrahim Chibsah Sawadogo</p>
-            <p>Bank Name: Ecobank Ghana</p>
-            <p>Account Number: 1441002627823</p>
-            <p>Swift Code: ECOCGHAC</p>
-            <p>Bank Address: 2 Morocco Lane, Off Independence Ave</p>
-            
-            <p><strong>Momo Pay:</strong></p>
-            <p>078797 (Merchant ID)</p>
-            <p> OpenDot Solutions LTD</p>
-            
-            <p><strong>Payment on Pickup Option:</strong></p>
-            <p>Opposite Kiddie Skills Montessori, Sakumono, Ghana</p>
-        </div>
-
-        <div class="disclaimer">
-            <p><strong>Disclaimer:</strong></p>
-            <p>Invoices remain valid until 00:00 (Midnight) </p>
+            <div class="payment-options-content">
+                <div class="payment-options-text">
+                    <p><strong>Bank Transfer Option:</strong></p>
+                    <p>Account Name: Opendot Solutions LTD</p>
+                    <p>Bank Name: Ecobank Ghana</p>
+                    <p>Account Number: 1441004833301</p>
+                    <p>Swift Code: ECOCGHAC</p>
+                    <p>Bank Address: 2 Morocco Lane, Off Independence Ave</p>
+                    
+                    <p><strong>Momo Pay:</strong></p>
+                    <p>078797 (Merchant ID)</p>
+                    <p>OpenDot Solutions LTD</p>
+                    
+                    <p><strong>Payment on Pickup Option:</strong></p>
+                    <p>Opposite Kiddie Skills Montessori, Sakumono, Ghana</p>
+                    <p><strong>Disclaimer:</strong></p>
+                    <p>Invoices remain valid until 00:00 (Midnight) </p>
+                </div>
+                <div class="payment-options-image">
+                    <img src="{% static 'website/images/payment.png' %}" alt="Payment Options" />
+                </div>
+            </div>
         </div>
 
         <div class="print-button-container">

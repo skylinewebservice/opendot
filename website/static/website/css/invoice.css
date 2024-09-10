@@ -155,3 +155,44 @@ h1 {
 .payment-options p strong {
     color: #333;
 }
+
+.invoice-main-container {
+    width: 80%;
+    margin: 20px auto;
+    background-color: white;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.payment-options-content {
+    display: flex;
+    justify-content: space-between; /* Distribute space evenly between text and image */
+    align-items: center; /* Align both text and image on the same horizontal line */
+}
+
+.payment-options-text {
+    flex: 1; /* Allows the text to take up available space */
+    padding-right: 20px; /* Space between text and image */
+}
+
+.payment-options-image {
+    flex-shrink: 0; /* Prevent the image from shrinking */
+    width: 90px; /* Set the image width */
+    text-align: right; /* Align the image to the right */
+}
+
+@media (max-width: 768px) {
+    .payment-options-content {
+        flex-direction: column; /* Stack text and image vertically on smaller screens */
+        align-items: flex-start;
+    }
+
+    .payment-options-text {
+        padding-right: 0;
+    }
+
+    .payment-options-image {
+        text-align: left;
+        margin-top: 10px; /* Add margin on top to space out when stacked */
+    }
+}
